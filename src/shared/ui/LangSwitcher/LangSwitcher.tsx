@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import cls from './LangSwitcher.module.scss';
 import { useTranslation } from 'react-i18next';
-import Button, { ThemeButton } from '../Button/Button';
 import { classNames } from 'shared/lib/classNames/classNames';
+import cls from './LangSwitcher.module.scss';
+import Button, { ThemeButton } from '../Button/Button';
 
 export interface LangSwitcherProps {
   className?: string;
