@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import { BugButton } from 'app/providers/ErrorBoundary';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export interface MainPageProps {}
@@ -6,7 +7,12 @@ export interface MainPageProps {}
 const MainPage: FC<MainPageProps> = (props) => {
   const { t } = useTranslation();
 
-  return <div>{t('Главная страница')}</div>;
+  return (
+    <div>
+      <BugButton />
+      {t('Главная страница')}
+    </div>
+  );
 };
 
 export default MainPage;
