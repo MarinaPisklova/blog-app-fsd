@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from 'shared/ui/Button/Button';
 
-//Компонент для тестирования ErrorBoundary
+// Компонент для тестирования ErrorBoundary
 const BugButton = () => {
   const [error, setError] = useState(false);
 

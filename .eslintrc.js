@@ -35,7 +35,10 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'jsx-quotes': ['error', 'prefer-double'],
     'max-len': ['error', { ignoreComments: true, code: 100 }],
-    'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'i18next/no-literal-string': [
+      'error',
+      { markupOnly: true, ignoreAttribute: ['data-testid'] },
+    ],
   },
   globals: {
     __IS_DEV__: true,
