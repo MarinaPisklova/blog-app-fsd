@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 export interface MainPageProps {}
 
-const MainPage: FC<MainPageProps> = (props) => {
+const MainPage: FC<MainPageProps> = () => {
   const { t } = useTranslation();
 
   return (

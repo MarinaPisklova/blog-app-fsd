@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component<
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component<
     //   in ErrorBoundary (created by App)
     //   in div (created by App)
     //   in App
-    console.log(error, info.componentStack);
+    // console.log(error, info.componentStack);
   }
 
   render() {
