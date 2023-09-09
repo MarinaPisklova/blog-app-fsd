@@ -13,7 +13,7 @@ export default {
   },
 } as ComponentMeta<typeof Sidebar>;
 
-const Template: ComponentStory<typeof Sidebar> = (args) => (
+const Template: ComponentStory<typeof Sidebar> = ({ ...args }) => (
   <Sidebar {...args} />
 );
 
