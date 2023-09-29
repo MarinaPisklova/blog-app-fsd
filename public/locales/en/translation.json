@@ -9,5 +9,7 @@
   "Страница не найдена": "Page not found",
   "Произошла непредвиденная ошибка": "Something went wrong",
   "Обновить страницу": "Reload page",
-  "Войти": "Login"
+  "Войти": "Login",
+  "Прибавить 1": "Increment",
+  "Отнять 1": "Decrement"
 }
