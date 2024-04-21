@@ -15,7 +15,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
 
   const onToggleModal = useCallback(() => {
-    setIsAuthModal(prev => !prev);
+    setIsAuthModal((prev) => !prev);
   }, []);
 
   return (
