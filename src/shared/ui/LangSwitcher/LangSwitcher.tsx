@@ -16,15 +16,13 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ className, short }) => {
   };
 
   return (
-    <div>
-      <Button
-        theme={ButtonTheme.CLEAR}
-        className={classNames('', {}, [className])}
-        onClick={toggle}
-      >
-        {t(short ? 'Короткий язык' : 'Язык')}
-      </Button>
-    </div>
+    <Button
+      theme={ButtonTheme.CLEAR}
+      className={classNames('', {}, [className])}
+      onClick={toggle}
+    >
+      {t(short ? 'Короткий язык' : 'Язык')}
+    </Button>
   );
 };
 
