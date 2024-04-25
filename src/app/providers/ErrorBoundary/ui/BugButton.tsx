@@ -7,7 +7,7 @@ const BugButton = () => {
   const [error, setError] = useState(false);
   const { t } = useTranslation();
 
-  const onTrow = () => {
+  const onThrow = () => {
     setError(true);
   };
 
@@ -15,7 +15,7 @@ const BugButton = () => {
     if (error) throw new Error();
   }, [error]);
 
-  return <Button onClick={onTrow}>{t('Прокинуть ошибку')}</Button>;
+  return <Button onClick={onThrow}>{t('Прокинуть ошибку')}</Button>;
 };
 
 export default BugButton;

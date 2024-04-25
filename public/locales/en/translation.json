@@ -1,15 +1,13 @@
 {
-  "Тестовый пример": "Test Example",
-  "Перевод": "Translate",
+  "Войти": "Enter",
   "Главная страница": "Main page",
-  "Язык": "English",
   "Короткий язык": "En",
-  "Переключить": "Toggle",
-  "Прокинуть ошибку": "Throw error",
-  "Страница не найдена": "Page not found",
-  "Произошла непредвиденная ошибка": "Something went wrong",
+  "О сайте": "About page",
   "Обновить страницу": "Reload page",
-  "Войти": "Login",
+  "Отнять 1": "Decrement",
   "Прибавить 1": "Increment",
-  "Отнять 1": "Decrement"
+  "Произошла непредвиденная ошибка": "Something went wrong",
+  "Прокинуть ошибку": "Throw an error",
+  "Страница не найдена": "Page not found",
+  "Язык": "English"
 }

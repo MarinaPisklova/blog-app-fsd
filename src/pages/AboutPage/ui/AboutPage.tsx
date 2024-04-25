@@ -6,7 +6,7 @@ export interface AboutPageProps {}
 const AboutPage: FC<AboutPageProps> = () => {
   const { t } = useTranslation('about');
 
-  return <div>{t('О сайте')}</div>;
+  return <div>{t('О сайте', { ns: 'about' })}</div>;
 };
 
 export default AboutPage;

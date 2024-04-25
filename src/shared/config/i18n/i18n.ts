@@ -11,9 +11,18 @@ i18n
   .init({
     fallbackLng: 'ru',
     debug: __IS_DEV__,
+    ns: ['translation, about'],
+    defaultNS: 'translation',
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
+    },
+    backend: {
+      // Указываете пути к файлам для каждого пространства имен
+      loadPath: (lngs: string[], namespaces: string[]) =>
+        `/locales/${lngs}/${namespaces}.json`,
+      addPath: (lng: string, namespace: string) =>
+        `/locales/${lng}/${namespace}.missing.json`,
     },
   });
 
