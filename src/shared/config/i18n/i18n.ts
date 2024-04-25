@@ -19,10 +19,8 @@ i18n
     },
     backend: {
       // Указываете пути к файлам для каждого пространства имен
-      loadPath: (lngs: string[], namespaces: string[]) =>
-        `/locales/${lngs}/${namespaces}.json`,
-      addPath: (lng: string, namespace: string) =>
-        `/locales/${lng}/${namespace}.missing.json`,
+      loadPath: (lngs: string[], namespaces: string[]) => `/locales/${lngs}/${namespaces}.json`,
+      addPath: (lng: string, namespace: string) => `/locales/${lng}/${namespace}.missing.json`,
     },
   });
 
