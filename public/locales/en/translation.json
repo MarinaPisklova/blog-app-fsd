@@ -1,5 +1,5 @@
 {
-  "Войти": "Enter",
+  "Войти": "Log in",
   "Главная страница": "Main page",
   "Короткий язык": "En",
   "О сайте": "About page",
@@ -11,5 +11,8 @@
   "Страница не найдена": "Page not found",
   "Язык": "English",
   "Введите username": "Enter username",
-  "Введите пароль": "Enter password"
+  "Введите пароль": "Enter password",
+  "Форма авторизации": "Login form",
+  "Вы ввели неверные данные": "You have entered incorrect data",
+  "Выйти": "Log out"
 }
