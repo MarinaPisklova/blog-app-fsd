@@ -1,10 +1,7 @@
 import { BugButton } from 'app/providers/ErrorBoundary';
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export interface MainPageProps {}
-
-const MainPage: FC<MainPageProps> = () => {
+const MainPage = () => {
   const { t } = useTranslation();
 
   return (
