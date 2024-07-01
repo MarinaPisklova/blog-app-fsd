@@ -20,9 +20,9 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -116,8 +116,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames('', {}, [className])}>
         <ProfilePageHeader />
-        {validateError?.length &&
-          validateError.map((err) => (
+        {validateError?.length
+          && validateError.map((err) => (
             <Text
               theme={TextTheme.ERROR}
               text={validateErrorTranslates[err]}
