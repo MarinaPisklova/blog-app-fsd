@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
-import Text, { TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
@@ -101,7 +101,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
         />
         <Input
           value={data?.city}
-          placeholder={t('Город')}
+          placeholder={t('Город', { ns: 'profile' })}
           className={cls.input}
           onChange={onChangeCity}
           readonly={readonly}

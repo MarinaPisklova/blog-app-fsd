@@ -1,6 +1,8 @@
 {
   "Войти": "Log in",
   "Главная страница": "Main page",
+  "Профиль": "Profile",
+  "Статьи": "Articles",
   "Короткий язык": "En",
   "О сайте": "About page",
   "Обновить страницу": "Reload page",
@@ -14,5 +16,8 @@
   "Введите пароль": "Enter password",
   "Форма авторизации": "Login form",
   "Вы ввели неверные данные": "You have entered incorrect data",
-  "Выйти": "Log out"
+  "Выйти": "Log out",
+  "Укажите валюту": "Choose currency",
+  "Укажите страну": "Choose country",
+  "Произошла ошибка при загрузке статьи": "An error occurred while loading the article"
 }

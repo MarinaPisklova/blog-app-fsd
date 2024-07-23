@@ -36,8 +36,11 @@ class ErrorBoundary extends React.Component<
     const { hasError } = this.state;
     const { children } = this.props;
 
+    console.log('error =', hasError);
+
     if (hasError) {
       // You can render any custom fallback UI
+      console.log('right');
       return (
         <Suspense fallback="">
           <ErrorPage />

@@ -1,4 +1,4 @@
-import { FC, Suspense, memo, useCallback } from 'react';
+import { Suspense, memo, useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
   AppRoutesProps,
@@ -7,10 +7,13 @@ import {
 import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 import { RequireAuth } from './RequireAuth';
 
-const AppRouter: FC = () => {
+const AppRouter = () => {
   const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-    const element = <div className="page-wrapper">{route.element}</div>;
-
+    const element = (
+      <Suspense fallback={<PageLoader />}>
+        <div className="page-wrapper">{route.element}</div>
+      </Suspense>
+    );
     return (
       <Route
         key={route.path}
@@ -22,13 +25,7 @@ const AppRouter: FC = () => {
     );
   }, []);
 
-  return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        {Object.values(routeConfig).map((route) => renderWithWrapper(route))}
-      </Routes>
-    </Suspense>
-  );
+  return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
 };
 
 export default memo(AppRouter);
