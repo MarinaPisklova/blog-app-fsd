@@ -16,21 +16,17 @@ const getSkeletons = (view: ArticleView) =>
   new Array(view === ArticleView.SMALL ? 9 : 3)
     .fill(0)
     .map(() => (
-      <ArticleListItemSkeleton className={cls.card} key={new Date().getTime()} view={view} />
+      <ArticleListItemSkeleton
+        className={cls.card}
+        key={new Date().getTime() + Math.random()}
+        view={view}
+      />
     ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
   const {
     className, articles, view = ArticleView.SMALL, isLoading,
   } = props;
-
-  if (isLoading) {
-    return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-        {getSkeletons(view)}
-      </div>
-    );
-  }
 
   const renderArticle = (article: Article) => (
     <ArticleListItem article={article} view={view} className={cls.card} key={article.id} />
@@ -39,6 +35,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
   return (
     <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
       {articles.length > 0 ? articles.map(renderArticle) : null}
+      {isLoading && getSkeletons(view)}
     </div>
   );
 });
