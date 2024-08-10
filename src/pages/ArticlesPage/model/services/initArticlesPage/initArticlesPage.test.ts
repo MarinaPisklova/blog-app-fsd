@@ -1,9 +1,8 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
+import { ArticleSortField, ArticleType } from 'entities/Article';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { initArticlesPage } from './initArticlesPage';
 
-jest.mock('../fetchArticlesList/fetchArticlesList');
 jest.mock('../../slices/articlesPageSlice');
 
 describe('initArticlesPage.test', () => {
@@ -20,9 +19,42 @@ describe('initArticlesPage.test', () => {
       },
     });
 
-    await thunk.callThunk();
+    const paramsObj = {
+      sort: '',
+      search: '',
+      order: '',
+      type: '',
+    };
+    const searchParams = new URLSearchParams(paramsObj);
+
+    await thunk.callThunk(searchParams);
     expect(thunk.dispatch).toBeCalledTimes(4);
-    expect(fetchArticlesList).toHaveBeenCalledWith({ page: 1 });
+    expect(articlesPageActions.initState).toHaveBeenCalled();
+  });
+
+  test('initArticlesPage called with search params', async () => {
+    const thunk = new TestAsyncThunk(initArticlesPage, {
+      articlesPage: {
+        page: 1,
+        ids: [],
+        entities: {},
+        limit: 5,
+        isLoading: false,
+        hasMore: true,
+        _inited: false,
+      },
+    });
+
+    const paramsObj = {
+      sort: ArticleSortField.CREATED,
+      search: 'some str',
+      order: 'asc',
+      type: ArticleType.ALL,
+    };
+    const searchParams = new URLSearchParams(paramsObj);
+
+    await thunk.callThunk(searchParams);
+    expect(thunk.dispatch).toBeCalledTimes(8);
     expect(articlesPageActions.initState).toHaveBeenCalled();
   });
 
@@ -39,7 +71,7 @@ describe('initArticlesPage.test', () => {
       },
     });
 
-    await thunk.callThunk();
+    await thunk.callThunk({} as URLSearchParams);
     expect(thunk.dispatch).toBeCalledTimes(2);
   });
 });
