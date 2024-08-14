@@ -32,7 +32,14 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     'jsx-quotes': ['error', 'prefer-double'],
-    'max-len': ['error', { ignoreComments: true, ignorePattern: '^import .*', code: 100 }],
+    'max-len': [
+      'error',
+      {
+        ignoreComments: true,
+        ignorePattern: '^import .*',
+        code: 130,
+      },
+    ],
     'i18next/no-literal-string': [
       'error',
       { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'target'] },
