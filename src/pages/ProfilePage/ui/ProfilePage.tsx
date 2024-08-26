@@ -32,7 +32,7 @@ const reducers: ReducersList = {
 };
 
 export interface ProfilePageProps {
-  className: string;
+  className?: string;
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
@@ -120,8 +120,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames('', {}, [className])}>
         <ProfilePageHeader />
-        {validateError?.length
-          && validateError.map((err) => (
+        {validateError?.length &&
+          validateError.map((err) => (
             <Text theme={TextTheme.ERROR} text={validateErrorTranslates[err]} key={err} />
           ))}
         <ProfileCard
