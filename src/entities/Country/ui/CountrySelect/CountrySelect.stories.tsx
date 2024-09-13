@@ -10,7 +10,16 @@ export default {
 } as ComponentMeta<typeof CountrySelect>;
 
 const Template: ComponentStory<typeof CountrySelect> = (args) => (
-  <CountrySelect {...args} />
+  <div
+    style={{
+      height: '300px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+    }}
+  >
+    <CountrySelect {...args} />
+  </div>
 );
 
 export const Primary = Template.bind({});
