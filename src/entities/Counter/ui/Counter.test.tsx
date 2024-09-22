@@ -1,10 +1,10 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { ComponentRender } from 'shared/lib/tests/componentRender/componentRender';
+import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import { Counter } from './Counter';
 
 describe('Counter', () => {
   test('Test render', () => {
-    ComponentRender(<Counter />, {
+    componentRender(<Counter />, {
       initialState: {
         counter: {
           value: 10,
@@ -15,7 +15,7 @@ describe('Counter', () => {
   });
 
   test('increment', () => {
-    ComponentRender(<Counter />, {
+    componentRender(<Counter />, {
       initialState: {
         counter: {
           value: 10,
@@ -28,7 +28,7 @@ describe('Counter', () => {
   });
 
   test('decrement', () => {
-    ComponentRender(<Counter />, {
+    componentRender(<Counter />, {
       initialState: {
         counter: {
           value: 10,
