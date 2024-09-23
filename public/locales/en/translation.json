@@ -36,5 +36,8 @@
   "по": "by",
   "просмотрам": "views",
   "убыванию": "descending",
-  "Поиск": "Search"
+  "Поиск": "Search",
+  "У вас нет доступа к этой странице": "You do not have access to this page",
+  "Админка": "Admin.panel",
+  "Админ панель": "Admin.panel"
 }
