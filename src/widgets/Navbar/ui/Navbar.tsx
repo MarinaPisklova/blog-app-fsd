@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useSelector } from 'react-redux';
-import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User';
+import {
+  getUserAuthData, isUserAdmin, isUserManager, userActions,
+} from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -55,11 +57,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           items={[
             ...(isAdminPanelAvailable
               ? [
-                  {
-                    content: t('Админка'),
-                    href: RoutePath.admin_panel,
-                  },
-                ]
+                {
+                  content: t('Админка'),
+                  href: RoutePath.admin_panel,
+                },
+              ]
               : []),
             {
               content: t('Профиль'),
