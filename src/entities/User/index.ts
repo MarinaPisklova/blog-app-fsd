@@ -1,19 +1,10 @@
-import { userActions, userReducer } from './model/slice/userSlice';
-import { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
-import type { User, UserSchema } from './model/types/user';
-import { UserRole } from './model/types/user';
-import { getUserInited } from './model/selectors/getUserInited/getUserInited';
-import { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/roleSelectors';
+export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
 
-export {
-  userActions,
-  userReducer,
-  User,
-  UserSchema,
-  UserRole,
-  getUserAuthData,
-  getUserInited,
-  isUserAdmin,
-  isUserManager,
-  getUserRoles,
-};
+export { getUserInited } from './model/selectors/getUserInited/getUserInited';
+
+export { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/roleSelectors';
+
+export { userReducer, userActions } from './model/slice/userSlice';
+
+export type { UserSchema, User } from './model/types/user';
+export { UserRole } from './model/consts/userConsts';

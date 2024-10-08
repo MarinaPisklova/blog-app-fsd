@@ -13,6 +13,6 @@ export {
   StateSchema,
   StateSchemaKey,
   ReduxStoreWithManager,
-  AppDispatch,
   ThunkConfig,
 };
+export type { AppDispatch };
