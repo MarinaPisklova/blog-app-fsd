@@ -1,5 +1,5 @@
 :root {
-  --font-family-main: consolas, 'Times New Roman', serif;
+  --font-family-main: consolas, "Times New Roman", serif;
   --font-size-s: 12px;
   --font-line-s: 20px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
@@ -18,8 +18,9 @@
   --sidebar-width: 300px;
   --sidebar-width-collapsed: 80px;
 
-  // z-индексы
+  // z - Индексы
   --modal-z-index: 1000;
+  --overlay-z-index: 100;
 
   // Цвета
   --overlay-color: rgba(0 0 0 / 60%);

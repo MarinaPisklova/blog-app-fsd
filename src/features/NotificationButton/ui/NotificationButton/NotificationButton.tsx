@@ -1,14 +1,14 @@
-import { NotificationList } from 'entities/Notification';
 import { memo, useCallback, useState } from 'react';
-import NotificationIcon from 'shared/assets/icons/notification-20-20.svg';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { Popover } from 'shared/ui/Popups';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
 import cls from './NotificationButton.module.scss';
-import { AnimationProvider } from 'shared/lib/components/AnimationProvider';
+import { NotificationList } from '@/entities/Notification';
+import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Popover } from '@/shared/ui/Popups';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 
 interface NotificationButtonProps {
   className?: string;
@@ -38,11 +38,11 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         <Popover
           className={classNames(cls.NotificationButton, {}, [className])}
           direction="bottom left"
-          trigger={
+          trigger={(
             <Button theme={ButtonTheme.CLEAR}>
               <Icon Svg={NotificationIcon} inverted />
             </Button>
-          }
+          )}
         >
           <NotificationList className={cls.notifications} />
         </Popover>

@@ -7,8 +7,8 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
