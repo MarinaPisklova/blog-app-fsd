@@ -17,12 +17,15 @@ Normal.args = {
   trigger: <Button>Open</Button>,
   items: [
     {
+      id: '0',
       content: 'first',
     },
     {
+      id: '1',
       content: 'second',
     },
     {
+      id: '2',
       content: 'third',
     },
   ],

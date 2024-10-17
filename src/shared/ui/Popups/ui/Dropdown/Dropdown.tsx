@@ -8,6 +8,7 @@ import { DropdownDirection } from '@/shared/types/ui';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface DropdownItem {
+  id: string;
   disabled?: boolean;
   content?: ReactNode;
   onClick?: () => void;
@@ -46,14 +47,14 @@ export function Dropdown(props: DropdownProps) {
 
           if (item.href) {
             return (
-              <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
+              <Menu.Item as={AppLink} key={item.id} to={item.href} disabled={item.disabled}>
                 {content}
               </Menu.Item>
             );
           }
 
           return (
-            <Menu.Item as={Fragment} disabled={item.disabled}>
+            <Menu.Item as={Fragment} key={item.id} disabled={item.disabled}>
               {content}
             </Menu.Item>
           );

@@ -8,7 +8,6 @@ import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { Popover } from '@/shared/ui/Popups';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
-import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 
 interface NotificationButtonProps {
   className?: string;
@@ -38,22 +37,20 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         <Popover
           className={classNames(cls.NotificationButton, {}, [className])}
           direction="bottom left"
-          trigger={(
+          trigger={
             <Button theme={ButtonTheme.CLEAR}>
               <Icon Svg={NotificationIcon} inverted />
             </Button>
-          )}
+          }
         >
-          <NotificationList className={cls.notifications} />
+          <NotificationList className={cls.Notifications} />
         </Popover>
       </BrowserView>
       <MobileView>
         {trigger}
-        <AnimationProvider>
-          <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-            <NotificationList />
-          </Drawer>
-        </AnimationProvider>
+        <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+          <NotificationList />
+        </Drawer>
       </MobileView>
     </div>
   );

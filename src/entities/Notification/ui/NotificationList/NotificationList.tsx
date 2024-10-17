@@ -25,6 +25,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
       </VStack>
     );
   }
+  console.log(classNames(cls.NotificationList, {}, [className]));
 
   return (
     <VStack gap="16" max className={classNames(cls.NotificationList, {}, [className])}>
