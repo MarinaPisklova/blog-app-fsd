@@ -68,7 +68,12 @@ module.exports = {
     'no-undef': 'off',
     'arrow-body-style': ['error', 'as-needed'],
     'implicit-arrow-linebreak': 'off',
-    'fsd-path-checker-by-mp/path-checker': 'error',
+    'fsd-path-checker-by-mp/path-checker': [
+      'error',
+      {
+        alias: '@',
+      },
+    ],
   },
   globals: {
     __IS_DEV__: true,
