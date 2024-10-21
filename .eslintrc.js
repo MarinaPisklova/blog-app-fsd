@@ -74,6 +74,13 @@ module.exports = {
         alias: '@',
       },
     ],
+    'fsd-path-checker-by-mp/public-api-imports': [
+      'error',
+      {
+        alias: '@',
+        testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+      },
+    ],
   },
   globals: {
     __IS_DEV__: true,
