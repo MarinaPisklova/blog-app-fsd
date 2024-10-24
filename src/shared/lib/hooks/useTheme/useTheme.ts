@@ -1,13 +1,14 @@
 import { useContext } from 'react';
-import { Theme, ThemeContext } from './ThemeContext';
-import { THEME_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import { ThemeContext } from '../../context/ThemeContext';
+import { Theme } from '../../../const/theme';
+import { THEME_LOCALSTORAGE_KEY } from '../../../const/localStorage';
 
-interface useThemeResult {
+interface UseThemeResult {
   toggleTheme: () => void;
   theme: Theme;
 }
 
-export function useTheme(): useThemeResult {
+export function useTheme(): UseThemeResult {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleTheme = () => {
@@ -24,13 +25,13 @@ export function useTheme(): useThemeResult {
       break;
     default:
       newTheme = Theme.LIGHT;
-      break;
     }
-
     setTheme?.(newTheme);
-    document.body.className = newTheme;
     localStorage.setItem(THEME_LOCALSTORAGE_KEY, newTheme);
   };
 
-  return { theme: Theme.LIGHT, toggleTheme };
+  return {
+    theme: theme || Theme.LIGHT,
+    toggleTheme,
+  };
 }

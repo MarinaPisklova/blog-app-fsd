@@ -8,7 +8,7 @@ export interface LangSwitcherProps {
   short?: boolean;
 }
 
-const LangSwitcher = memo(({ className, short }: LangSwitcherProps) => {
+export const LangSwitcher = memo(({ className, short }: LangSwitcherProps) => {
   const { t, i18n } = useTranslation();
 
   const toggle = () => {
@@ -21,5 +21,3 @@ const LangSwitcher = memo(({ className, short }: LangSwitcherProps) => {
     </Button>
   );
 });
-
-export default LangSwitcher;

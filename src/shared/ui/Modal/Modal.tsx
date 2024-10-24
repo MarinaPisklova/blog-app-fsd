@@ -4,7 +4,7 @@ import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
-import { useTheme } from '@/app/providers/ThemeProvider';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 export interface ModalProps {
   className?: string;

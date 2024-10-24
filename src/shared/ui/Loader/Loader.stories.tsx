@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Loader } from './Loader';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { Theme } from '@/shared/const/theme';
 
 export default {
   title: 'shared/Loader',
@@ -15,9 +15,7 @@ export default {
   },
 } as ComponentMeta<typeof Loader>;
 
-const Template: ComponentStory<typeof Loader> = ({ ...args }) => (
-  <Loader {...args} />
-);
+const Template: ComponentStory<typeof Loader> = ({ ...args }) => <Loader {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {};
