@@ -16,7 +16,7 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ProfileCard } from '@/entities/Profile';
-import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { Text, TextTheme } from '@/shared/ui/Text';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
