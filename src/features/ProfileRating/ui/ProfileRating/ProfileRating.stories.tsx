@@ -54,7 +54,7 @@ WithoutRate.decorators = [
 WithoutRate.parameters = {
   mockData: [
     {
-      url: `${__API__}/article-ratings?userId=1&articleId=1`,
+      url: `${__API__}/profile-ratings?userId=1&profileId=1`,
       method: 'GET',
       status: 200,
       response: [],
