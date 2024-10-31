@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
+import avatar from '@/shared/assets/tests/storybook.jpg';
 
 export default {
   title: 'entities/ProfileCard',
@@ -23,6 +24,7 @@ Primary.args = {
     first: 'Marina',
     city: 'Moscow',
     currency: Currency.USD,
+    avatar,
   },
 };
 

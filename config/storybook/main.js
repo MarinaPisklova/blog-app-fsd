@@ -16,4 +16,7 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
+  staticDirs: [
+    { from: '../../src/shared/assets/tests', to: 'static/media/src/shared/assets/tests' },
+  ],
 };
