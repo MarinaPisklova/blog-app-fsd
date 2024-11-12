@@ -1,12 +1,11 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   useGetProfileRating,
   useRateProfile,
 } from '../../api/profileRatingApi';
 import { RatingCard } from '@/entities/Rating';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface ProfileRatingProps {
@@ -17,7 +16,7 @@ export interface ProfileRatingProps {
 const ProfileRating = memo((props: ProfileRatingProps) => {
   const { className, profileId } = props;
   const { t } = useTranslation();
-  const userData = useSelector(getUserAuthData);
+  const userData = useUserAuthData();
 
   const { data, isLoading } = useGetProfileRating({
     profileId,

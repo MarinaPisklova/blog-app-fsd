@@ -1,26 +1,25 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { useTranslation } from 'react-i18next';
 import {
-  getArticlesPageOrder,
-  getArticlesPageSearch,
-  getArticlesPageSort,
-  getArticlesPageType,
-  getArticlesPageView,
+  useArticlesPageOrder,
+  useArticlesPageSearch,
+  useArticlesPageSort,
+  useArticlesPageType,
+  useArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import { ArticleViewSelector } from '@/features/ArticleViewSelector';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { SortOrder } from '@/shared/types/sort';
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
-import { SortOrder } from '@/shared/types/sort';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { ArticleSortSelector } from '@/features/ArticleSortSelector';
-import { ArticleViewSelector } from '@/features/ArticleViewSelector';
-import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 
 interface ArticlesPageFiltersProps {
   className?: string;
@@ -30,11 +29,11 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
   const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const view = useSelector(getArticlesPageView);
-  const sort = useSelector(getArticlesPageSort);
-  const order = useSelector(getArticlesPageOrder);
-  const search = useSelector(getArticlesPageSearch);
-  const type = useSelector(getArticlesPageType);
+  const view = useArticlesPageView();
+  const sort = useArticlesPageSort();
+  const order = useArticlesPageOrder();
+  const search = useArticlesPageSearch();
+  const type = useArticlesPageType();
 
   const fetchData = useCallback(() => {
     dispatch(fetchArticlesList({ replace: true }));

@@ -1,21 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
-import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { useTranslation } from 'react-i18next';
+import { useLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { useLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { useLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { useLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { Input } from '@/shared/ui/Input';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Input } from '@/shared/ui/Input';
-import { Text, TextTheme } from '@/shared/ui/Text';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface LoginFormProps {
@@ -28,10 +27,10 @@ const initialReducers: ReducersList = { loginForm: loginReducer };
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const username = useSelector(getLoginUsername);
-  const password = useSelector(getLoginPassword);
-  const isLoading = useSelector(getLoginIsLoading);
-  const error = useSelector(getLoginError);
+  const username = useLoginUsername();
+  const password = useLoginPassword();
+  const isLoading = useLoginIsLoading();
+  const error = useLoginError();
 
   const onChangeUsername = useCallback(
     (value: string) => {

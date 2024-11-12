@@ -1,11 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { SidebarItemType } from '../../model/types/sidebar';
 import cls from './SidebarItem.module.scss';
-import { getUserAuthData } from '@/entities/User';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useUserAuthData } from '@/entities/User';
 
 export interface SidebarItemProps {
   item: SidebarItemType;
@@ -14,7 +13,7 @@ export interface SidebarItemProps {
 
 export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
   const { t } = useTranslation();
-  const isAuth = useSelector(getUserAuthData);
+  const isAuth = useUserAuthData();
 
   if (item.authOnly && !isAuth) {
     return null;

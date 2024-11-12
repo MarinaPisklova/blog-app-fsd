@@ -1,13 +1,11 @@
 import { memo, MutableRefObject, ReactNode, useRef, UIEvent } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import cls from './Page.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getScrollByPath, scrollSaverActions } from '@/features/ScrollSaver';
+import { useScrollByPath, scrollSaverActions } from '@/features/ScrollSaver';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestProps } from '@/shared/types/tests';
 
@@ -24,9 +22,7 @@ export const Page = memo((props: PageProps) => {
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-  const scrollPosition = useSelector((state: StateSchema) =>
-    getScrollByPath(state, pathname),
-  );
+  const scrollPosition = useScrollByPath(pathname);
 
   useInfiniteScroll({
     triggerRef,

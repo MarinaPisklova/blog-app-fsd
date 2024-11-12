@@ -1,11 +1,10 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import {
-  getUserAuthData,
-  isUserAdmin,
-  isUserManager,
+  useIsUserAdmin,
   userActions,
+  useUserAuthData,
+  useIsUserManager,
 } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -21,9 +20,9 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
   const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const isAdmin = useSelector(isUserAdmin);
-  const isManager = useSelector(isUserManager);
-  const authData = useSelector(getUserAuthData);
+  const isAdmin = useIsUserAdmin();
+  const isManager = useIsUserManager();
+  const authData = useUserAuthData();
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());

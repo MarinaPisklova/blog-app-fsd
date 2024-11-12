@@ -1,16 +1,15 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
-import { profileActions } from '../../model/slice/profileSlice';
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { useTranslation } from 'react-i18next';
+import { useProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { useProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
+import { profileActions } from '../../model/slice/profileSlice';
+import { useUserAuthData } from '@/entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { getUserAuthData } from '@/entities/User';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface EditableProfileCardHeaderProps {
   className?: string;
@@ -21,10 +20,10 @@ export const EditableProfileCardHeader = memo(
     const { className } = props;
 
     const { t } = useTranslation('profile');
-    const authData = useSelector(getUserAuthData);
-    const profileData = useSelector(getProfileData);
+    const authData = useUserAuthData();
+    const profileData = useProfileData();
     const canEdit = authData?.id === profileData?.id;
-    const readonly = useSelector(getProfileReadonly);
+    const readonly = useProfileReadonly();
     const dispatch = useAppDispatch();
 
     const onEdit = useCallback(() => {

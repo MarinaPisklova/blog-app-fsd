@@ -1,12 +1,20 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { UserRole } from '../consts/userConsts';
 import { StateSchema } from '@/app/providers/StoreProvider';
+import { buildSelector } from '@/shared/lib/store';
 
-export const getUserRoles = (state: StateSchema) => state.user.authData?.roles;
-
-export const isUserAdmin = createSelector(getUserRoles, (roles) =>
-  Boolean(roles?.includes(UserRole.ADMIN)),
+export const [useUserRoles, getUserRoles] = buildSelector(
+  (state: StateSchema) => state.user.authData?.roles,
 );
-export const isUserManager = createSelector(getUserRoles, (roles) =>
-  Boolean(roles?.includes(UserRole.MANAGER)),
+
+export const [useIsUserAdmin, isUserAdmin] = buildSelector(
+  createSelector(getUserRoles, (roles) =>
+    Boolean(roles?.includes(UserRole.ADMIN)),
+  ),
+);
+
+export const [useIsUserManager, isUserManager] = buildSelector(
+  createSelector(getUserRoles, (roles) =>
+    Boolean(roles?.includes(UserRole.MANAGER)),
+  ),
 );

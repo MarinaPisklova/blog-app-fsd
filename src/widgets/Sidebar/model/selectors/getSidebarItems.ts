@@ -11,37 +11,40 @@ import {
   getRouteMain,
   getRouteProfile,
 } from '@/shared/const/router';
+import { buildSelector } from '@/shared/lib/store';
 
-export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
-  const sidebarItemsList: SidebarItemType[] = [
-    {
-      path: getRouteMain(),
-      Icon: MainIcon,
-      text: 'Главная страница',
-    },
-    {
-      path: getRouteAbout(),
-      Icon: AboutIcon,
-      text: 'О сайте',
-    },
-  ];
-
-  if (userData) {
-    sidebarItemsList.push(
+export const [useSidebarItems, getSidebarItems] = buildSelector(
+  createSelector(getUserAuthData, (userData) => {
+    const sidebarItemsList: SidebarItemType[] = [
       {
-        path: getRouteProfile(userData.id),
-        Icon: ProfileIcon,
-        text: 'Профиль',
-        authOnly: true,
+        path: getRouteMain(),
+        Icon: MainIcon,
+        text: 'Главная страница',
       },
       {
-        path: getRouteArticles(),
-        Icon: ArticleIcon,
-        text: 'Статьи',
-        authOnly: true,
+        path: getRouteAbout(),
+        Icon: AboutIcon,
+        text: 'О сайте',
       },
-    );
-  }
+    ];
 
-  return sidebarItemsList;
-});
+    if (userData) {
+      sidebarItemsList.push(
+        {
+          path: getRouteProfile(userData.id),
+          Icon: ProfileIcon,
+          text: 'Профиль',
+          authOnly: true,
+        },
+        {
+          path: getRouteArticles(),
+          Icon: ArticleIcon,
+          text: 'Статьи',
+          authOnly: true,
+        },
+      );
+    }
+
+    return sidebarItemsList;
+  }),
+);

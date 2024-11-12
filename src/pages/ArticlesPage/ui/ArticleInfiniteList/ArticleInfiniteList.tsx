@@ -1,14 +1,14 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getArticles } from '../../model/slices/articlesPageSlice';
 import {
-  getArticlesPageError,
-  getArticlesPageIsLoading,
-  getArticlesPageView,
+  useArticlesPageError,
+  useArticlesPageIsLoading,
+  useArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
-import { ArticleList } from '@/entities/Article';
+import { getArticles } from '../../model/slices/articlesPageSlice';
 import { Text } from '@/shared/ui/Text';
+import { ArticleList } from '@/entities/Article';
 
 interface ArticleInfiniteListProps {
   className?: string;
@@ -17,9 +17,9 @@ interface ArticleInfiniteListProps {
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
   const { className } = props;
   const articles = useSelector(getArticles.selectAll);
-  const isLoading = useSelector(getArticlesPageIsLoading);
-  const view = useSelector(getArticlesPageView);
-  const error = useSelector(getArticlesPageError);
+  const isLoading = useArticlesPageIsLoading();
+  const view = useArticlesPageView();
+  const error = useArticlesPageError();
   const { t } = useTranslation();
 
   if (error) {
