@@ -18,13 +18,21 @@ interface ArticleListProps {
 
 const getSkeletons = (view: ArticleView) =>
   new Array(view === ArticleView.SMALL ? 9 : 3).fill(0).map((_, index) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <ArticleListItemSkeleton className={cls.card} key={`skeleton-${view}-${index}`} view={view} />
+    <ArticleListItemSkeleton
+      className={cls.card}
+      // eslint-disable-next-line react/no-array-index-key
+      key={`skeleton-${view}-${index}`}
+      view={view}
+    />
   ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
   const {
-    className, articles, view = ArticleView.SMALL, isLoading, target,
+    className,
+    articles,
+    view = ArticleView.SMALL,
+    isLoading,
+    target,
   } = props;
   const { t } = useTranslation();
 

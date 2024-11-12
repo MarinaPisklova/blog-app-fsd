@@ -17,9 +17,7 @@ interface SelectProps<T extends string> {
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
-  const {
-    className, label, options, onChange, value, readonly,
-  } = props;
+  const { className, label, options, onChange, value, readonly } = props;
 
   const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     if (onChange) {
@@ -42,7 +40,12 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
   return (
     <div className={classNames(cls.Wrapper, mods, [className])}>
       {label && <span className={cls.label}>{`${label}>`}</span>}
-      <select disabled={readonly} className={cls.select} value={value} onChange={onChangeHandler}>
+      <select
+        disabled={readonly}
+        className={cls.select}
+        value={value}
+        onChange={onChangeHandler}
+      >
         {optionsList}
       </select>
     </div>

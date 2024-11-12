@@ -12,7 +12,9 @@ export default {
   },
 } as ComponentMeta<typeof ArticleList>;
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+  <ArticleList {...args} />
+);
 
 const article = {
   id: '1',
@@ -24,7 +26,8 @@ const article = {
   user: {
     id: '1',
     username: 'Ulbi tv',
-    avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
+    avatar:
+      'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
   },
   type: ['IT', 'SCIENCE', 'POLITICS', 'ECONOMICS'],
   blocks: [

@@ -30,7 +30,11 @@ export const CommentList = memo((props: CommentListProps) => {
     <VStack gap="16" max className={classNames('', {}, [className])}>
       {comments?.length ? (
         comments.map((comment) => (
-          <CommentCard isLoading={isLoading} comment={comment} key={comment.id} />
+          <CommentCard
+            isLoading={isLoading}
+            comment={comment}
+            key={comment.id}
+          />
         ))
       ) : (
         <Text text={t('Комментарии отсутствуют')} />

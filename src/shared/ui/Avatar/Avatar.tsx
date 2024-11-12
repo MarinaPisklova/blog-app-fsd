@@ -15,7 +15,11 @@ interface AvatarProps {
 }
 
 export const Avatar = ({
-  className, src, size, alt, fallbackInverted,
+  className,
+  src,
+  size,
+  alt,
+  fallbackInverted,
 }: AvatarProps) => {
   const mods: Mods = {};
 
@@ -29,7 +33,12 @@ export const Avatar = ({
 
   const fallback = <Skeleton width={size} height={size} border="50%" />;
   const errorFallback = (
-    <Icon inverted={fallbackInverted} width={size} height={size} Svg={UserIcon} />
+    <Icon
+      inverted={fallbackInverted}
+      width={size}
+      height={size}
+      Svg={UserIcon}
+    />
   );
 
   return (

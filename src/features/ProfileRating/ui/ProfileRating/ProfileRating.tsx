@@ -1,7 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useGetProfileRating, useRateProfile } from '../../api/profileRatingApi';
+import {
+  useGetProfileRating,
+  useRateProfile,
+} from '../../api/profileRatingApi';
 import { RatingCard } from '@/entities/Rating';
 import { getUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -65,7 +68,9 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
       rate={rating?.rate}
       className={className}
       title={t('Оцените профиль')}
-      feedbackTitle={t('Оставьте свой отзыв о профиле, это поможет улучшить качество')}
+      feedbackTitle={t(
+        'Оставьте свой отзыв о профиле, это поможет улучшить качество',
+      )}
       hasFeedback
     />
   );

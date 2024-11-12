@@ -3,7 +3,10 @@ import { HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { ArticleBlockType, ArticleView } from '../../model/consts/articleConsts';
+import {
+  ArticleBlockType,
+  ArticleView,
+} from '../../model/consts/articleConsts';
 import cls from './ArticleListItem.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
@@ -25,9 +28,7 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const {
-    className, article, view, target,
-  } = props;
+  const { className, article, view, target } = props;
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -67,7 +68,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             className={cls.img}
             alt={article.title}
           />
-          {textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />}
+          {textBlock && (
+            <ArticleTextBlockComponent
+              block={textBlock}
+              className={cls.textBlock}
+            />
+          )}
           <div className={cls.footer}>
             <AppLink target={target} to={getRouteArticleDetails(article.id)}>
               <Button theme={ButtonTheme.OUTLINE}>{t('Читать далее')}</Button>

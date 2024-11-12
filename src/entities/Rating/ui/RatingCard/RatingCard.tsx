@@ -23,7 +23,13 @@ interface RatingCardProps {
 
 export const RatingCard = memo((props: RatingCardProps) => {
   const {
-    className, onAccept, feedbackTitle, hasFeedback, onCancel, title, rate = 0,
+    className,
+    onAccept,
+    feedbackTitle,
+    hasFeedback,
+    onCancel,
+    title,
+    rate = 0,
   } = props;
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,10 +71,18 @@ export const RatingCard = memo((props: RatingCardProps) => {
   );
 
   return (
-    <Card data-testid="RatingCard" max className={classNames('', {}, [className])}>
+    <Card
+      data-testid="RatingCard"
+      max
+      className={classNames('', {}, [className])}
+    >
       <VStack align="center" gap="8">
         <Text title={starsCount ? t('Спасибо за оценку!') : title} />
-        <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
+        <StarRating
+          selectedStars={starsCount}
+          size={40}
+          onSelect={onSelectStars}
+        />
       </VStack>
       <BrowserView>
         <Modal isOpen={isModalOpen} lazy>

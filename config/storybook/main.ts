@@ -21,7 +21,10 @@ export default {
     builder: 'webpack5',
   },
   staticDirs: [
-    { from: '../../src/shared/assets/tests', to: 'static/media/src/shared/assets/tests' },
+    {
+      from: '../../src/shared/assets/tests',
+      to: 'static/media/src/shared/assets/tests',
+    },
   ],
   webpackFinal: async (config: Configuration) => {
     const paths = {

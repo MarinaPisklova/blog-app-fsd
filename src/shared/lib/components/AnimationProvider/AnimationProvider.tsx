@@ -1,5 +1,11 @@
 import {
-  createContext, ReactNode, useContext, useEffect, useMemo, useRef, useState,
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 
 type SpringType = typeof import('@react-spring/web');
@@ -13,9 +19,11 @@ interface AnimationContextPayload {
 
 const AnimationContext = createContext<AnimationContextPayload>({});
 
-const getAsyncAnimationModules = async () => Promise.all([import('@react-spring/web'), import('@use-gesture/react')]);
+const getAsyncAnimationModules = async () =>
+  Promise.all([import('@react-spring/web'), import('@use-gesture/react')]);
 
-export const useAnimationLibs = () => useContext(AnimationContext) as Required<AnimationContextPayload>;
+export const useAnimationLibs = () =>
+  useContext(AnimationContext) as Required<AnimationContextPayload>;
 
 export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   const SpringRef = useRef<SpringType>();
@@ -39,5 +47,9 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
     [isLoaded],
   );
 
-  return <AnimationContext.Provider value={value}>{children}</AnimationContext.Provider>;
+  return (
+    <AnimationContext.Provider value={value}>
+      {children}
+    </AnimationContext.Provider>
+  );
 };
