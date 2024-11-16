@@ -75,4 +75,27 @@ Normal.decorators = [
 ];
 Normal.parameters = {
   initialEntries: ['/article/1'],
+  mockData: [
+    {
+      url: `${__API__}/article-ratings?userId=1&articleId=1`,
+      method: 'GET',
+      status: 200,
+      response: [
+        {
+          rate: 4,
+        },
+      ],
+    },
+
+    {
+      url: `${__API__}/articles?_limit=3`,
+      method: 'GET',
+      status: 200,
+      response: [
+        { ...article, id: '1' },
+        { ...article, id: '2' },
+        { ...article, id: '3' },
+      ],
+    },
+  ],
 };

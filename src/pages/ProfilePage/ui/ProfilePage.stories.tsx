@@ -40,6 +40,14 @@ Normal.decorators = [
 ];
 Normal.parameters = {
   initialEntries: ['/profile/1'],
+  mockData: [
+    {
+      url: `${__API__}/profile-ratings?userId=1&profileId=1`,
+      method: 'GET',
+      status: 200,
+      response: [],
+    },
+  ],
 };
 
 export const Dark = Template.bind({});
@@ -62,4 +70,12 @@ Dark.decorators = [
 ];
 Dark.parameters = {
   initialEntries: ['/profile/1'],
+  mockData: [
+    {
+      url: `${__API__}/profile-ratings?userId=1&profileId=1`,
+      method: 'GET',
+      status: 200,
+      response: [],
+    },
+  ],
 };
