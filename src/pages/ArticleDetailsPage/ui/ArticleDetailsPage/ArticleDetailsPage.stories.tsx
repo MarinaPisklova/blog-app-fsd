@@ -1,7 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Route, Routes } from 'react-router-dom';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { setFeatureFlags } from '@/shared/lib/features';
 
 export default {
   title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
@@ -11,9 +13,16 @@ export default {
   },
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
-  <ArticleDetailsPage {...args} />
-);
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => {
+  setFeatureFlags({
+    isArticleRatingEnabled: true,
+  });
+  return (
+    <Routes>
+      <Route path="/article/:id" element={<ArticleDetailsPage {...args} />} />
+    </Routes>
+  );
+};
 
 const article: Article = {
   id: '1',
@@ -64,3 +73,6 @@ Normal.decorators = [
     },
   }),
 ];
+Normal.parameters = {
+  initialEntries: ['/article/1'],
+};

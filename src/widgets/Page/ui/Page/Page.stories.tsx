@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Page } from './Page';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Text } from '@/shared/ui/Text';
 
 export default {
   title: 'widgets/Page',
@@ -13,5 +13,11 @@ export default {
 const Template: ComponentStory<typeof Page> = (args) => <Page {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [StoreDecorator({})];
+Normal.args = {
+  children: (
+    <Text
+      title="Добро пожаловать на страницу статей"
+      text="Здесь вы можете искать и просматривать статьи на различные темы"
+    />
+  ),
+};

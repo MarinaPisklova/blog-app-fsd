@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Route, Routes } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
@@ -15,7 +16,9 @@ export default {
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => (
-  <ProfilePage {...args} />
+  <Routes>
+    <Route path="/profile/:id" element={<ProfilePage {...args} />} />
+  </Routes>
 );
 
 export const Normal = Template.bind({});
@@ -35,6 +38,9 @@ Normal.decorators = [
     },
   }),
 ];
+Normal.parameters = {
+  initialEntries: ['/profile/1'],
+};
 
 export const Dark = Template.bind({});
 Dark.args = {};
@@ -54,3 +60,6 @@ Dark.decorators = [
     },
   }),
 ];
+Dark.parameters = {
+  initialEntries: ['/profile/1'],
+};
