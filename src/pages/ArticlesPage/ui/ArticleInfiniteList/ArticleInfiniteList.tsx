@@ -7,7 +7,7 @@ import {
   useArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import { getArticles } from '../../model/slices/articlesPageSlice';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { ArticleList } from '@/entities/Article';
 
 interface ArticleInfiniteListProps {
