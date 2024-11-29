@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Article } from '../../model/types/article';
 import {
-  ArticleBlockType,
   ArticleType,
+  ArticleBlockType,
 } from '../../model/consts/articleConsts';
+import { Article } from '../../model/types/article';
 import { ArticleDetails } from './ArticleDetails';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
@@ -29,7 +29,7 @@ const article: Article = {
   type: [ArticleType.IT],
   user: {
     id: '1',
-    username: 'user',
+    username: 'Ulbi tv',
   },
   blocks: [
     {
