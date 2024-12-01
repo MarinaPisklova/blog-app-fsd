@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CommentCard } from './CommentCard';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
   title: 'entities/Comment/CommentCard',
@@ -12,15 +13,20 @@ export default {
 const Template: ComponentStory<typeof CommentCard> = (args) => (
   <CommentCard {...args} />
 );
-
-export const Normal = Template.bind({});
-Normal.args = {
+const normalArgs = {
   comment: {
     id: '1',
     text: 'hello world',
     user: { id: '1', username: 'Vasya' },
   },
 };
+
+export const Normal = Template.bind({});
+Normal.args = normalArgs;
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.args = normalArgs;
+NormalRedesigned.decorators = [NewDesignDecorator];
 
 export const Loading = Template.bind({});
 Loading.args = {

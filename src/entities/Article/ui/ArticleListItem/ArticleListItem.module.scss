@@ -40,7 +40,7 @@
 }
 
 .SMALL {
-  width: 230px;
+  width: 240px;
   transition: 0.2s;
   cursor: pointer;
 
@@ -105,5 +105,12 @@
 .ArticleListItemRedesigned {
   &.BIG {
     width: 100%;
+  }
+
+  &.SMALL {
+    .card {
+      height: 350px;
+      width: 240px;
+    }
   }
 }
