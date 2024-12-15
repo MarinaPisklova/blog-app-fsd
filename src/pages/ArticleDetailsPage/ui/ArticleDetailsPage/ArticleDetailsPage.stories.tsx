@@ -4,27 +4,12 @@ import ArticleDetailsPage from './ArticleDetailsPage';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { setFeatureFlags } from '@/shared/lib/features';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
+import { getAllFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
 
-export default {
-  title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
-  component: ArticleDetailsPage,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as ComponentMeta<typeof ArticleDetailsPage>;
-
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => {
-  setFeatureFlags({
-    isArticleRatingEnabled: true,
-  });
-  return (
-    <Routes>
-      <Route path="/article/:id" element={<ArticleDetailsPage {...args} />} />
-    </Routes>
-  );
-};
-
-const article: Article = {
+const mockArticle: Article = {
   id: '1',
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',
@@ -64,38 +49,111 @@ const article: Article = {
   ],
 };
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
+const mockComments = [
+  {
+    id: '1',
+    text: 'Great article!',
+    user: {
+      username: 'Andrew',
     },
-  }),
+  },
+  {
+    id: '2',
+    text: 'Very informative.',
+    user: {
+      username: 'Nastya',
+    },
+  },
 ];
-Normal.parameters = {
-  initialEntries: ['/article/1'],
-  mockData: [
-    {
-      url: `${__API__}/article-ratings?userId=1&articleId=1`,
-      method: 'GET',
-      status: 200,
-      response: [
-        {
-          rate: 4,
-        },
-      ],
+const mockStore = {
+  articleDetails: {
+    data: mockArticle,
+  },
+  articleDetailsPage: {
+    comments: {
+      ids: mockComments.map((comment) => comment.id),
+      entities: Object.fromEntries(
+        mockComments.map((comment) => [comment.id, comment]),
+      ),
+      isLoading: false,
+      error: undefined,
     },
-
-    {
-      url: `${__API__}/articles?_limit=3`,
-      method: 'GET',
-      status: 200,
-      response: [
-        { ...article, id: '1' },
-        { ...article, id: '2' },
-        { ...article, id: '3' },
-      ],
-    },
-  ],
+  },
 };
+
+const mockRequest = [
+  {
+    url: `${__API__}/article-ratings?userId=1&articleId=1`,
+    method: 'GET',
+    status: 200,
+    response: [
+      {
+        rate: 4,
+      },
+    ],
+  },
+  {
+    url: `${__API__}/articles?_limit=3&_expand=user`,
+    method: 'GET',
+    status: 200,
+    response: [
+      { ...mockArticle, id: '1' },
+      { ...mockArticle, id: '2' },
+      { ...mockArticle, id: '3' },
+    ],
+  },
+];
+
+export default {
+  title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
+  component: ArticleDetailsPage,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+  decorators: [StoreDecorator(mockStore)],
+  parameters: {
+    initialEntries: ['/article/1'],
+    mockData: mockRequest,
+  },
+} as ComponentMeta<typeof ArticleDetailsPage>;
+
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => {
+  setFeatureFlags({
+    ...getAllFeatureFlags(),
+    isArticleRatingEnabled: true,
+  });
+  return (
+    <Routes>
+      <Route path="/article/:id" element={<ArticleDetailsPage {...args} />} />
+    </Routes>
+  );
+};
+
+export const NormalTheme = Template.bind({});
+NormalTheme.args = {};
+
+export const DarkTheme = Template.bind({});
+DarkTheme.args = {};
+DarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const PurpleTheme = Template.bind({});
+PurpleTheme.args = {};
+PurpleTheme.decorators = [ThemeDecorator(Theme.PURPLE)];
+
+export const RedesignedNormalTheme = Template.bind({});
+RedesignedNormalTheme.args = {};
+RedesignedNormalTheme.decorators = [NewDesignDecorator];
+
+export const RedesignedDarkTheme = Template.bind({});
+RedesignedDarkTheme.args = {};
+RedesignedDarkTheme.decorators = [
+  NewDesignDecorator,
+  ThemeDecorator(Theme.DARK),
+];
+
+export const RedesignedPurpleTheme = Template.bind({});
+RedesignedPurpleTheme.args = {};
+RedesignedPurpleTheme.decorators = [
+  NewDesignDecorator,
+  ThemeDecorator(Theme.PURPLE),
+];

@@ -491,10 +491,10 @@
       "roles": "ADMIN",
       "features": {
         "isArticleRatingEnabled": true,
-        "isAppRedesigned": true
+        "isAppRedesigned": false
       },
       "jsonSettings": {
-        "theme": "app_purple_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
         "isArticlesPageWasOpened": true
       },

@@ -21,6 +21,7 @@ export default {
     builder: 'webpack5',
   },
   staticDirs: [
+    '../../public',
     {
       from: '../../src/shared/assets/tests',
       to: 'static/media/src/shared/assets/tests',

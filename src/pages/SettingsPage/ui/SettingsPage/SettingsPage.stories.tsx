@@ -1,54 +1,22 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Route, Routes } from 'react-router-dom';
-import ProfilePage from './ProfilePage';
+import SettingsPage from './SettingsPage';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
-const mockStore = {
-  profile: {
-    readonly: true,
-    form: {
-      username: 'admin',
-      age: 22,
-      country: Country.Russia,
-      lastname: 'Pisklova',
-      first: 'Marina',
-      city: 'Moscow',
-      currency: Currency.USD,
-    },
-  },
-};
-
-const mockRequest = {
-  url: `${__API__}/profile-ratings?userId=1&profileId=1`,
-  method: 'GET',
-  status: 200,
-  response: [],
-};
-
 export default {
-  title: 'pages/ProfilePage',
-  component: ProfilePage,
+  title: 'pages/SettingsPage',
+  component: SettingsPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator(mockStore)],
-  parameters: {
-    initialEntries: ['/profile/1'],
-    mockData: [mockRequest],
-  },
-} as ComponentMeta<typeof ProfilePage>;
+  decorators: [StoreDecorator({})],
+} as ComponentMeta<typeof SettingsPage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => (
-  <Routes>
-    <Route path="/profile/:id" element={<ProfilePage {...args} />} />
-  </Routes>
+const Template: ComponentStory<typeof SettingsPage> = () => (
+  <SettingsPage className="storybook" />
 );
-
 export const NormalTheme = Template.bind({});
 NormalTheme.args = {};
 

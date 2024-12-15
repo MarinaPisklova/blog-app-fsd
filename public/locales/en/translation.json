@@ -37,10 +37,13 @@
   "просмотрам": "views",
   "убыванию": "descending",
   "Поиск": "Search",
-  "У вас нет доступа к этой странице": "You do not have access to this page",
-  "Админка": "Admin.panel",
+  "forbidden_page": "You do not have access to this page",
+  "admin_panel_page": "Admin.panel",
   "Админ панель": "Admin.panel",
   "{{count}} просмотров_zero": "{{count}} views",
   "{{count}} просмотров_one": "{{count}} view",
-  "{{count}} просмотров_other": "{{count}} views"
+  "{{count}} просмотров_other": "{{count}} views",
+  "settings": "User settings",
+  "article_edit_page_redactor": "Article editor",
+  "article_edit_page_creator": "Article creation"
 }

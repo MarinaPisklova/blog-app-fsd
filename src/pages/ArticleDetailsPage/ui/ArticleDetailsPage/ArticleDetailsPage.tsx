@@ -29,15 +29,13 @@ const reducers: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer,
 };
 
-const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
-  const { className } = props;
+const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation('article-details');
 
   if (!id) {
     return null;
   }
-
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <ToggleFeatures

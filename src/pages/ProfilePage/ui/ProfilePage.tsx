@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
+import { memo } from 'react';
 import { EditableProfileCard } from '@/features/EditableProfileCard';
+import { ProfileRating } from '@/features/ProfileRating';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Page } from '@/widgets/Page';
-import { ProfileRating } from '@/features/ProfileRating';
 
 export interface ProfilePageProps {
   className?: string;
@@ -26,4 +27,4 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   );
 };
 
-export default ProfilePage;
+export default memo(ProfilePage);
