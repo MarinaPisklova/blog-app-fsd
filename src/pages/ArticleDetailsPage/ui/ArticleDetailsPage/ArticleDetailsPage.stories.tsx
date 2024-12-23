@@ -8,6 +8,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 import { getAllFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
+import avatar from '@/shared/assets/tests/storybook.jpg';
 
 const mockArticle: Article = {
   id: '1',
@@ -19,6 +20,7 @@ const mockArticle: Article = {
   user: {
     id: '1',
     username: 'user',
+    avatar,
   },
   type: [ArticleType.IT],
   blocks: [
@@ -55,6 +57,7 @@ const mockComments = [
     text: 'Great article!',
     user: {
       username: 'Andrew',
+      avatar,
     },
   },
   {
@@ -62,6 +65,7 @@ const mockComments = [
     text: 'Very informative.',
     user: {
       username: 'Nastya',
+      avatar,
     },
   },
 ];

@@ -82,6 +82,13 @@
 
 .disabled {
   opacity: 0.5;
+  cursor: default;
+
+  &:hover {
+    opacity: 0.5;
+    fill-opacity: 50%;
+    stroke-opacity: 50%;
+  }
 }
 
 .fullWidth {

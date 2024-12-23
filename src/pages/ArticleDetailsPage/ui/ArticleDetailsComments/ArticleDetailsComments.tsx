@@ -44,8 +44,8 @@ export const ArticleDetailsComments = memo(
       <VStack gap="16" max className={classNames('', {}, [className])}>
         <ToggleFeatures
           feature="isAppRedesigned"
-          on={<Text size="l" title={t('Комментарии')} />}
-          off={<TextDeprecated size={TextSize.L} title={t('Комментарии')} />}
+          on={<Text size="l" title={t('comments')} />}
+          off={<TextDeprecated size={TextSize.L} title={t('comments')} />}
         />
         <Suspense fallback={<Loader />}>
           <AddCommentForm onSendComment={onSendComment} />

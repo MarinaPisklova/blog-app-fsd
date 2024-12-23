@@ -1,70 +1,37 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { VStack } from '../../../../redesigned/Stack';
 import { ListBox } from './ListBox';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'shared/ListBox',
+  title: 'shared/deprecated/ListBox',
   component: ListBox,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [
-    (Story) => (
-      <div style={{ padding: 100 }}>
-        <Story />
-      </div>
-    ),
-  ],
+  args: {
+    value: 'first',
+    items: [
+      { content: 'first', value: 'first' },
+      { content: 'second', value: 'second' },
+    ],
+  },
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => (
-  <ListBox {...args} />
+  <VStack gap="32" style={{ height: '350px' }}>
+    <ListBox {...args} label="Open Bottom rigth" />
+    <ListBox {...args} direction="bottom left" label="Open Bottom left" />
+    <ListBox {...args} direction="top right" label="Open Top right" />
+    <ListBox {...args} direction="top left" label="Open Top left" />
+  </VStack>
 );
 
-export const Normal = Template.bind({});
-Normal.args = {
-  value: '123',
-  items: [
-    { content: '1asfasfasf23', value: '123' },
-    { content: '1asfasfasf21233', value: '1232' },
-  ],
-};
+export const LightTheme = Template.bind({});
 
-export const topLeft = Template.bind({});
-topLeft.args = {
-  direction: 'top left',
-  value: '123',
-  items: [
-    { content: '1asfasfasf23', value: '123' },
-    { content: '1asfasfasf21233', value: '1232' },
-  ],
-};
+export const DarkTheme = Template.bind({});
+DarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const topRight = Template.bind({});
-topRight.args = {
-  direction: 'top right',
-  value: '123',
-  items: [
-    { content: '1asfasfasf23', value: '123' },
-    { content: '1asfasfasf21233', value: '1232' },
-  ],
-};
-
-export const bottomLeft = Template.bind({});
-bottomLeft.args = {
-  direction: 'bottom left',
-  value: '123',
-  items: [
-    { content: '1asfasfasf23', value: '123' },
-    { content: '1asfasfasf21233', value: '1232' },
-  ],
-};
-
-export const bottomRight = Template.bind({});
-bottomRight.args = {
-  direction: 'bottom right',
-  value: '123',
-  items: [
-    { content: '1asfasfasf23', value: '123' },
-    { content: '1asfasfasf21233', value: '1232' },
-  ],
-};
+export const PurpleTheme = Template.bind({});
+PurpleTheme.decorators = [ThemeDecorator(Theme.PURPLE)];

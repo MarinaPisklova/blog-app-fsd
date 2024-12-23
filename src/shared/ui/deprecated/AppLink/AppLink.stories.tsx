@@ -1,11 +1,11 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { HStack } from '../../redesigned/Stack';
 import { AppLink, AppLinkTheme } from './AppLink';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'shared/AppLink',
+  title: 'shared/deprecated/AppLink',
   component: AppLink,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -16,44 +16,23 @@ export default {
 } as ComponentMeta<typeof AppLink>;
 
 const Template: ComponentStory<typeof AppLink> = (args) => (
-  <AppLink {...args} />
+  <HStack gap="16">
+    <AppLink {...args} theme={AppLinkTheme.PRIMARY}>
+      Primary
+    </AppLink>
+    <AppLink {...args} theme={AppLinkTheme.SECONDARY}>
+      Secondary
+    </AppLink>
+    <AppLink {...args} theme={AppLinkTheme.RED}>
+      Red
+    </AppLink>
+  </HStack>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
-  children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
-};
+export const LightTheme = Template.bind({});
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  children: 'Text',
-  theme: AppLinkTheme.SECONDARY,
-};
+export const DarkTheme = Template.bind({});
+DarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const Red = Template.bind({});
-Red.args = {
-  children: 'Text',
-  theme: AppLinkTheme.RED,
-};
-
-export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
-  children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
-};
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const SecondaryDark = Template.bind({});
-SecondaryDark.args = {
-  children: 'Text',
-  theme: AppLinkTheme.SECONDARY,
-};
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const RedDark = Template.bind({});
-RedDark.args = {
-  children: 'Text',
-  theme: AppLinkTheme.RED,
-};
-RedDark.decorators = [ThemeDecorator(Theme.DARK)];
+export const PurpleTheme = Template.bind({});
+PurpleTheme.decorators = [ThemeDecorator(Theme.PURPLE)];

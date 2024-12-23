@@ -7,6 +7,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
+import avatar from '@/shared/assets/tests/storybook.jpg';
 
 const mockStore = {
   profile: {
@@ -19,6 +20,7 @@ const mockStore = {
       first: 'Marina',
       city: 'Moscow',
       currency: Currency.USD,
+      avatar,
     },
   },
 };

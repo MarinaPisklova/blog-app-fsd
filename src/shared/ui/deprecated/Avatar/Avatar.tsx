@@ -21,7 +21,7 @@ interface AvatarProps {
 export const Avatar = ({
   className,
   src,
-  size,
+  size = 100,
   alt,
   fallbackInverted,
 }: AvatarProps) => {

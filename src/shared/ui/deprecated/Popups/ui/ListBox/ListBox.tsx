@@ -73,7 +73,7 @@ export function ListBox(props: ListBoxProps) {
                     [popupCls.disabled]: item.disabled,
                   })}
                 >
-                  {selected && '!!!'}
+                  {selected && '>'}
                   {item.content}
                 </li>
               )}

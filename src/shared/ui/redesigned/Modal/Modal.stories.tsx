@@ -1,10 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Text } from '../Text';
 import { Modal } from './Modal';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
-  title: 'shared/Modal',
+  title: 'shared/redesigned/Modal',
   component: Modal,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -12,24 +14,16 @@ export default {
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = ({ ...args }) => (
-  <Modal {...args} />
+  <Modal {...args} isOpen>
+    <Text title="Modal window" text="Lorem ipsum dolor sit amet consectetur" />
+  </Modal>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
-  isOpen: true,
-  children: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-  cupiditate iusto expedita tempora? Expedita harum voluptates, illo saepe
-  provident hic in voluptatibus voluptas iusto, omnis, itaque non
-  laudantium ea nesciunt`,
-};
+export const LightTheme = Template.bind({});
+LightTheme.decorators = [NewDesignDecorator];
 
-export const Dark = Template.bind({});
-Dark.args = {
-  isOpen: true,
-  children: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-  cupiditate iusto expedita tempora? Expedita harum voluptates, illo saepe
-  provident hic in voluptatibus voluptas iusto, omnis, itaque non
-  laudantium ea nesciunt`,
-};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const DarkTheme = Template.bind({});
+DarkTheme.decorators = [NewDesignDecorator, ThemeDecorator(Theme.DARK)];
+
+export const PurpleTheme = Template.bind({});
+PurpleTheme.decorators = [NewDesignDecorator, ThemeDecorator(Theme.PURPLE)];

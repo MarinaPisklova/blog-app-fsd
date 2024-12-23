@@ -43,15 +43,15 @@
   border-radius: 34px;
 
   &.normal {
-    background: 2px solid var(--light-bg-redesigned);
+    background: var(--light-bg-redesigned);
   }
 
   &.error {
-    background: 2px solid var(--cancel-redesigned);
+    background: var(--cancel-redesigned);
   }
 
   &.success {
-    background: 2px solid var(--save-redesigned);
+    background: var(--save-redesigned);
   }
 }
 
@@ -110,6 +110,15 @@
 
 .disabled {
   opacity: 0.5;
+  &:hover {
+    color: var(--text-redesigned);
+    cursor: default;
+
+    .addonLeft svg,
+    .addonRight svg {
+      color: var(--text-redesigned);
+    }
+  }
 }
 
 .fullWidth {

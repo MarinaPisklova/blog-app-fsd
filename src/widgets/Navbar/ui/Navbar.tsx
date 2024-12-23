@@ -56,7 +56,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           <header className={classNames(mainClass, {}, [className])}>
             <Text
               className={cls.appName}
-              title={t('IT Blog App')}
+              title={t('Blog App')}
               theme={TextTheme.INVERTED}
             />
             <AppLink
@@ -64,7 +64,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
               theme={AppLinkTheme.SECONDARY}
               className={cls.createBtn}
             >
-              {t('Создать статью')}
+              {t('create_article')}
             </AppLink>
             <HStack gap="16" className={cls.actions}>
               <NotificationButton />
@@ -82,7 +82,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         feature="isAppRedesigned"
         on={
           <Button variant="clear" className={cls.links} onClick={onOpenModal}>
-            {t('Войти')}
+            {t('login_btn')}
           </Button>
         }
         off={
@@ -91,7 +91,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             className={cls.links}
             onClick={onOpenModal}
           >
-            {t('Войти')}
+            {t('login_btn')}
           </ButtonDeprecated>
         }
       />

@@ -4,7 +4,7 @@ import UserIcon from '../../../assets/icons/user-filled.svg';
 import { Icon } from '../Icon';
 import { Skeleton } from '../Skeleton';
 import cls from './Avatar.module.scss';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface AvatarProps {
   className?: string;
@@ -14,8 +14,6 @@ interface AvatarProps {
 }
 
 export const Avatar = ({ className, src, size = 100, alt }: AvatarProps) => {
-  const mods: Mods = {};
-
   const styles = useMemo<CSSProperties>(
     () => ({
       width: size,
@@ -34,7 +32,7 @@ export const Avatar = ({ className, src, size = 100, alt }: AvatarProps) => {
       src={src}
       alt={alt}
       style={styles}
-      className={classNames(cls.Avatar, mods, [className])}
+      className={classNames(cls.Avatar, {}, [className])}
     />
   );
 };
