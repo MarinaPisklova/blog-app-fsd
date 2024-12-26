@@ -1,12 +1,11 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
-import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 import { FiltersContainer } from '../FiltersContainer/FiltersContainer';
 import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import cls from './ArticlesPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -32,10 +31,6 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
 
-  const onLoadNextPart = useCallback(() => {
-    dispatch(fetchNextArticlesPage());
-  }, [dispatch]);
-
   useInitialEffect(() => {
     dispatch(initArticlesPage(searchParams));
   });
@@ -50,7 +45,6 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
           content={
             <Page
               data-testid="ArticlesPage"
-              onScrollEnd={onLoadNextPart}
               className={classNames(cls.ArticlesPageRedesigned, {}, [
                 className,
               ])}
@@ -64,7 +58,6 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
       off={
         <Page
           data-testid="ArticlesPage"
-          onScrollEnd={onLoadNextPart}
           className={classNames(cls.ArticlesPage, {}, [className])}
         >
           <ArticlesPageFilters />

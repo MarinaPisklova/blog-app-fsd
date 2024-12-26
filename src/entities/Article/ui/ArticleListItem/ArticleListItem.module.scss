@@ -23,6 +23,7 @@
   .img {
     width: 100%;
     max-height: 250px;
+    min-height: 250px;
     object-fit: cover;
     margin: 16px 0;
   }
@@ -40,7 +41,7 @@
 }
 
 .SMALL {
-  width: 240px;
+  width: 230px;
   transition: 0.2s;
   cursor: pointer;
 

@@ -5,17 +5,26 @@
 }
 
 .SMALL {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-
   .card {
     display: inline-flex;
     height: 300px;
   }
 
-  .row {
+  .grid {
     display: flex;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 16px;
   }
+
+  .skeletons {
+    margin: 16px 0;
+  }
+}
+
+.ArticleList{
+  height: calc(100% - 250px);
+}
+
+.ArticleListRedesigned{
+  overflow-y: hidden;
 }

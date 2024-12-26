@@ -1,5 +1,12 @@
-import { HTMLAttributeAnchorTarget, memo } from 'react';
+/* eslint-disable react/prop-types */
+import { forwardRef, HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  Components,
+  GridComponents,
+  Virtuoso,
+  VirtuosoGrid,
+} from 'react-virtuoso';
 import { ArticleView } from '../../model/consts/articleConsts';
 import { Article } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -18,10 +25,11 @@ interface ArticleListProps {
   target?: HTMLAttributeAnchorTarget;
   view?: ArticleView;
   error?: string;
+  onLoadNextPart?: () => void;
 }
 
 const getSkeletons = (view: ArticleView) =>
-  new Array(view === ArticleView.SMALL ? 9 : 3).fill(0).map((_, index) => (
+  new Array(view === ArticleView.SMALL ? 3 : 1).fill(0).map((_, index) => (
     <ArticleListItemSkeleton
       className={cls.card}
       // eslint-disable-next-line react/no-array-index-key
@@ -29,6 +37,47 @@ const getSkeletons = (view: ArticleView) =>
       view={view}
     />
   ));
+
+const getComponentsGrid = (
+  isLoading: boolean,
+  view: ArticleView,
+): GridComponents => ({
+  List: forwardRef(({ style, children, ...props }, ref) => (
+    <div
+      ref={ref}
+      {...props}
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '16px',
+        ...style,
+      }}
+    >
+      {children}
+      {isLoading ? <>{getSkeletons(view)}</> : null}
+    </div>
+  )),
+  Item: ({ children, ...props }) => <div {...props}>{children}</div>,
+});
+
+const getComponentsList = (
+  isLoading: boolean,
+  view: ArticleView,
+): Components<Article> => ({
+  Footer: () => (isLoading ? <>{getSkeletons(view)}</> : null),
+});
+
+const getComponentsListRedesigned = (
+  isLoading: boolean,
+  view: ArticleView,
+): Components<Article> => ({
+  Footer: () => (isLoading ? <>{getSkeletons(view)}</> : null),
+  Item: ({ children, ...props }) => (
+    <div {...props} style={{ marginBottom: '16px' }}>
+      {children}
+    </div>
+  ),
+});
 
 export const ArticleList = memo((props: ArticleListProps) => {
   const {
@@ -38,6 +87,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     isLoading,
     target,
     error,
+    onLoadNextPart,
   } = props;
   const { t } = useTranslation('articles');
 
@@ -86,16 +136,43 @@ export const ArticleList = memo((props: ArticleListProps) => {
           className={classNames(cls.ArticleListRedesigned, {}, [])}
           data-testid="ArticleList"
         >
-          {articles.map((item) => (
-            <ArticleListItem
-              article={item}
-              view={view}
-              target={target}
-              key={item.id}
-              className={cls.card}
+          {view === ArticleView.BIG ? (
+            <Virtuoso
+              style={{ width: '100%' }}
+              useWindowScroll
+              endReached={onLoadNextPart}
+              data={articles}
+              // eslint-disable-next-line react/no-unstable-nested-components
+              itemContent={(_, item) => (
+                <ArticleListItem
+                  article={item}
+                  view={view}
+                  target={target}
+                  key={item.id}
+                  className={cls.card}
+                />
+              )}
+              components={getComponentsListRedesigned(isLoading ?? false, view)}
             />
-          ))}
-          {isLoading && getSkeletons(view)}
+          ) : (
+            <VirtuosoGrid
+              style={{ width: '100%' }}
+              useWindowScroll
+              endReached={onLoadNextPart}
+              components={getComponentsGrid(isLoading ?? false, view)}
+              data={articles}
+              // eslint-disable-next-line react/no-unstable-nested-components
+              itemContent={(_, item) => (
+                <ArticleListItem
+                  article={item}
+                  view={view}
+                  target={target}
+                  key={item.id}
+                  className={cls.card}
+                />
+              )}
+            />
+          )}
         </HStack>
       }
       off={
@@ -103,16 +180,39 @@ export const ArticleList = memo((props: ArticleListProps) => {
           className={classNames(cls.ArticleList, {}, [className, cls[view]])}
           data-testid="ArticleList"
         >
-          {articles.map((item) => (
-            <ArticleListItem
-              article={item}
-              view={view}
-              target={target}
-              key={item.id}
-              className={cls.card}
+          {view === ArticleView.BIG ? (
+            <Virtuoso
+              endReached={onLoadNextPart}
+              data={articles}
+              components={getComponentsList(isLoading ?? false, view)}
+              // eslint-disable-next-line react/no-unstable-nested-components
+              itemContent={(_, item) => (
+                <ArticleListItem
+                  article={item}
+                  view={view}
+                  target={target}
+                  key={item.id}
+                  className={cls.card}
+                />
+              )}
             />
-          ))}
-          {isLoading && getSkeletons(view)}
+          ) : (
+            <VirtuosoGrid
+              endReached={onLoadNextPart}
+              components={getComponentsGrid(isLoading ?? false, view)}
+              data={articles}
+              // eslint-disable-next-line react/no-unstable-nested-components
+              itemContent={(_, item) => (
+                <ArticleListItem
+                  article={item}
+                  view={view}
+                  target={target}
+                  key={item.id}
+                  className={cls.card}
+                />
+              )}
+            />
+          )}
         </div>
       }
     />

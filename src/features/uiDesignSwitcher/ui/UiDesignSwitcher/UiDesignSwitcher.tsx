@@ -1,10 +1,16 @@
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUserAuthData } from '@/entities/User';
-import { getFeatureFlag, updateFeatureFlag } from '@/shared/lib/features';
+import {
+  getFeatureFlag,
+  ToggleFeatures,
+  updateFeatureFlag,
+} from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
@@ -46,19 +52,40 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
     }
   };
 
-  return (
-    <HStack>
-      <Text text={t('title')} />
-      {isLoading ? (
-        <Skeleton width={100} height={40} />
-      ) : (
+  const skeleton = (
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      on={<SkeletonRedesigned width={100} height={40} />}
+      off={<SkeletonDeprecated width={100} height={40} />}
+    />
+  );
+
+  const content = (
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      on={
         <ListBox
           onChange={onChange}
           items={items}
           value={isAppRedesigned ? 'new' : 'old'}
           className={className}
         />
-      )}
+      }
+      off={
+        <ListBoxDeprecated
+          onChange={onChange}
+          items={items}
+          value={isAppRedesigned ? 'new' : 'old'}
+          className={className}
+        />
+      }
+    />
+  );
+
+  return (
+    <HStack>
+      <Text text={t('title')} />
+      {isLoading ? skeleton : content}
     </HStack>
   );
 });
