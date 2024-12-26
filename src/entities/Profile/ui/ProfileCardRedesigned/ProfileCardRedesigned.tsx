@@ -11,14 +11,14 @@ import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { Text } from '@/shared/ui/redesigned/Text';
 
 export const ProfileCardRedesignedError = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile', { keyPrefix: 'errors.download' });
 
   return (
     <HStack justify="center" max>
       <Text
         variant="error"
-        title={t('Произошла ошибка при загрузке профиля')}
-        text={t('Попробуйте обновить страницу')}
+        title={t('title')}
+        text={t('text')}
         align="center"
       />
     </HStack>
@@ -64,7 +64,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
     onChangeCountry,
     onChangeCurrency,
   } = props;
-  const { t } = useTranslation('profile');
+  const { t } = useTranslation('profile', { keyPrefix: 'card' });
 
   return (
     <Card padding="24" max className={className} border="partial">
@@ -78,27 +78,27 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
           <VStack gap="16" max>
             <Input
               value={data?.first}
-              label={t('Имя')}
+              label={t('first_name')}
               onChange={onChangeFirstname}
               readonly={readonly}
               data-testid="ProfileCard.firstname"
             />
             <Input
               value={data?.lastname}
-              label={t('Фамилия')}
+              label={t('last_name')}
               onChange={onChangeLastname}
               readonly={readonly}
               data-testid="ProfileCard.lastname"
             />
             <Input
               value={data?.age}
-              label={t('Возраст')}
+              label={t('age')}
               onChange={onChangeAge}
               readonly={readonly}
             />
             <Input
               value={data?.city}
-              label={t('Город')}
+              label={t('city')}
               onChange={onChangeCity}
               readonly={readonly}
             />
@@ -106,13 +106,13 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
           <VStack gap="16" max>
             <Input
               value={data?.username}
-              label={t('Имя пользователя')}
+              label={t('username')}
               onChange={onChangeUsername}
               readonly={readonly}
             />
             <Input
               value={data?.avatar}
-              label={t('Cсылка на аватар')}
+              label={t('avatar')}
               onChange={onChangeAvatar}
               readonly={readonly}
             />

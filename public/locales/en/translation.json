@@ -1,53 +1,55 @@
 {
-  "login_btn": "Log in",
-  "main_page": "Main",
-  "profile_page": "Profile",
-  "articles_page": "Articles",
-  "Короткий язык": "En",
-  "about_page": "About",
-  "reload_page_btn": "Reload page",
-  "Отнять 1": "Decrement",
-  "Прибавить 1": "Increment",
-  "unexpected_error": "Something went wrong",
-  "Прокинуть ошибку": "Throw an error",
-  "Страница не найдена": "Page not found",
-  "Язык": "English",
-  "Введите username": "Enter username",
-  "Введите пароль": "Enter password",
-  "Форма авторизации": "Login form",
-  "Вы ввели неверные данные": "You have entered incorrect data",
-  "Выйти": "Log out",
-  "Укажите валюту": "Choose currency",
-  "Укажите страну": "Choose country",
-  "Произошла ошибка при загрузке статьи": "An error occurred while loading the article",
-  "Введите текст комментария": "Enter comment",
-  "comments": "Comments",
-  "Комментарии отсутствуют": "No comments",
-  "Читать далее": "Read more",
-  "Айти": "IT",
-  "Все статьи": "All articles",
-  "Наука": "Science",
-  "Сортировать ПО": "Sort by",
-  "Статьи не найдены": "Articles not found",
-  "Экономика": "Economy",
-  "возрастанию": "ascending",
-  "дате создания": "creation date",
-  "названию": "name",
-  "по": "by",
-  "просмотрам": "views",
-  "убыванию": "descending",
-  "search": "Search",
+  "language": {
+    "long": "English",
+    "short": "En"
+  },
+  "login": {
+    "form": {
+      "username": "Enter username",
+      "password": "Enter password",
+      "btn": "Log in",
+      "error": "You have entered incorrect data",
+      "title": "Login form"
+    }
+  },
+  "dropdown": {
+    "admin": "Admin.panel",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "settings": {
+    "design": {
+      "title": "Interface option",
+      "old": "Old",
+      "new": "New"
+    }
+  },
+  "sidebar": {
+    "main_page": "Main",
+    "profile_page": "Profile",
+    "articles_page": "Articles",
+    "about_page": "About"
+  },
+  "navbar": {
+    "login_btn": "Log in",
+    "create_article": "Create article"
+  },
+  "error_page": {
+    "reload_page_btn": "Reload page",
+    "unexpected_error": "Something went wrong"
+  },
+  "not_found_page": "Page not found",
   "forbidden_page": "You do not have access to this page",
   "admin_panel_page": "Admin.panel",
-  "Админ панель": "Admin.panel",
-  "{{count}} views_zero": "{{count}} views",
-  "{{count}} views_one": "{{count}} view",
-  "{{count}} views_other": "{{count}} views",
-  "settings": "User settings",
-  "article_edit_page_redactor": "Article editor",
-  "article_edit_page_creator": "Article creation",
-  "articles_error": "An error occurred while loading articles",
-  "back_to_articles": "Back to articles",
-  "edit_btn": "Edit",
-  "create_article": "Create article"
+  "settings_page": "User settings",
+  "article_edit_page": {
+    "redactor": "Article editor",
+    "creator": "Article creation"
+  },
+  "selects": {
+    "country": "Choose country",
+    "currency": "Choose currency"
+  },
+  "throw_error": "Throw an error"
 }

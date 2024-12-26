@@ -18,8 +18,8 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
   const isEdit = Boolean(id);
 
   const title = isEdit
-    ? t('article_edit_page_redactor')
-    : t('article_edit_page_creator');
+    ? t('article_edit_page.redactor')
+    : t('article_edit_page.creator');
 
   const content = (
     <ToggleFeatures

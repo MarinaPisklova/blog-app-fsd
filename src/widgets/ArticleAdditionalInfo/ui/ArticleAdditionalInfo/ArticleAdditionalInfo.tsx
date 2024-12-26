@@ -20,7 +20,7 @@ interface ArticleAdditionalInfoProps {
 export const ArticleAdditionalInfo = memo(
   (props: ArticleAdditionalInfoProps) => {
     const { className, author, createdAt, views, onEdit } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('articles');
 
     return (
       <Card padding="24" border="partial" className={cls.card}>
@@ -30,7 +30,7 @@ export const ArticleAdditionalInfo = memo(
             <Text text={author.username} bold />
             <Text text={createdAt} />
           </HStack>
-          <Button onClick={onEdit}>{t('edit_btn')}</Button>
+          <Button onClick={onEdit}>{t('buttons.edit_btn')}</Button>
           <Text text={t('{{count}} views', { count: views })} />
         </VStack>
       </Card>

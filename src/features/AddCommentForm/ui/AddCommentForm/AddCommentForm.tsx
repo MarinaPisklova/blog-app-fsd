@@ -34,7 +34,7 @@ const reducers: ReducersList = {
 
 const AddCommentForm = memo((props: AddCommentFormProps) => {
   const { className, onSendComment } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'addCommentForm' });
   const text = useAddCommentFormText();
   const dispatch = useAppDispatch();
 
@@ -67,7 +67,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
             >
               <Input
                 className={cls.input}
-                placeholder={t('Введите текст комментария')}
+                placeholder={t('placeholder')}
                 value={text}
                 data-testid="AddCommentForm.Input"
                 onChange={onCommentTextChange}
@@ -76,7 +76,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
                 data-testid="AddCommentForm.Button"
                 onClick={onSendHandler}
               >
-                {t('Отправить')}
+                {t('submit_btn')}
               </Button>
             </HStack>
           </Card>
@@ -90,7 +90,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
           >
             <InputDeprecated
               className={cls.input}
-              placeholder={t('Введите текст комментария')}
+              placeholder={t('placeholder')}
               value={text}
               data-testid="AddCommentForm.Input"
               onChange={onCommentTextChange}
@@ -100,7 +100,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
               theme={ButtonTheme.OUTLINE}
               onClick={onSendHandler}
             >
-              {t('Отправить')}
+              {t('submit_btn')}
             </ButtonDeprecated>
           </HStack>
         }

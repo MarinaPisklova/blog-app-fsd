@@ -39,23 +39,40 @@ export const ArticleList = memo((props: ArticleListProps) => {
     target,
     error,
   } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles');
 
   if (error) {
     return (
       <ToggleFeatures
         feature="isAppRedesigned"
-        on={<Text size="m" title={t('articles_error')} />}
-        off={<TextDeprecated size={TextSize.M} title={t('articles_error')} />}
+        on={<Text size="m" title={t('loadingError.articles')} />}
+        off={
+          <TextDeprecated
+            size={TextSize.M}
+            title={t('loadingError.articles')}
+          />
+        }
       />
     );
   }
 
   if (!isLoading && !articles.length) {
     return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-        <TextDeprecated size={TextSize.L} title={t('Статьи не найдены')} />
-      </div>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={
+          <div className={classNames(cls.ArticleListRedesigned, {}, [])}>
+            <Text size="m" title={t('not_found')} />
+          </div>
+        }
+        off={
+          <div
+            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+          >
+            <TextDeprecated size={TextSize.M} title={t('not_found')} />
+          </div>
+        }
+      />
     );
   }
 

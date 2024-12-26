@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Drawer } from '@/shared/ui/redesigned/Drawer';
 
 export const ArticlePageGreeting = memo(() => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'gretting' });
   const [isOpen, setIsOpen] = useState(false);
   const { isArticlesPageWasOpened } = useJsonSettings();
   const dispatch = useAppDispatch();
@@ -22,14 +22,7 @@ export const ArticlePageGreeting = memo(() => {
 
   const onClose = () => setIsOpen(false);
 
-  const text = (
-    <Text
-      title={t('Добро пожаловать на страницу статей')}
-      text={t(
-        'Здесь вы можете искать и просматривать статьи на различные темы',
-      )}
-    />
-  );
+  const text = <Text title={t('title')} text={t('text')} />;
 
   if (isMobile) {
     return (

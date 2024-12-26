@@ -34,7 +34,7 @@ export interface LoginFormProps {
 const initialReducers: ReducersList = { loginForm: loginReducer };
 
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('translation', { keyPrefix: 'login.form' });
   const dispatch = useAppDispatch();
   const username = useLoginUsername();
   const password = useLoginPassword();
@@ -73,25 +73,20 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
             gap="16"
             className={classNames(cls.LoginForm, {}, [className])}
           >
-            <Text title={t('Форма авторизации')} />
-            {error && (
-              <Text
-                text={t('Вы ввели неверный логин или пароль')}
-                variant="error"
-              />
-            )}
+            <Text title={t('title')} />
+            {error && <Text text={t('error')} variant="error" />}
             <Input
               autofocus
               type="text"
               className={cls.input}
-              placeholder={t('Введите username')}
+              placeholder={t('username')}
               onChange={onChangeUsername}
               value={username}
             />
             <Input
               type="text"
               className={cls.input}
-              placeholder={t('Введите пароль')}
+              placeholder={t('password')}
               onChange={onChangePassword}
               value={password}
             />
@@ -100,31 +95,28 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
               onClick={onLoginClick}
               disabled={isLoading}
             >
-              {t('Войти')}
+              {t('btn')}
             </Button>
           </VStack>
         }
         off={
           <div className={classNames(cls.LoginForm, {}, [className])}>
-            <TextDeprecated title={t('Форма авторизации')} />
+            <TextDeprecated title={t('title')} />
             {error && (
-              <TextDeprecated
-                text={t('Вы ввели неверные данные')}
-                theme={TextTheme.ERROR}
-              />
+              <TextDeprecated text={t('error')} theme={TextTheme.ERROR} />
             )}
             <InputDeprecated
               autoFocus
               type="text"
               className={cls.input}
-              placeholder={t('Введите username')}
+              placeholder={t('username')}
               onChange={onChangeUsername}
               value={username}
             />
             <InputDeprecated
               type="text"
               className={cls.input}
-              placeholder={t('Введите пароль')}
+              placeholder={t('password')}
               onChange={onChangePassword}
               value={password}
             />
@@ -134,7 +126,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
               onClick={onLoginClick}
               disabled={isLoading}
             >
-              {t('Войти')}
+              {t('btn')}
             </ButtonDeprecated>
           </div>
         }

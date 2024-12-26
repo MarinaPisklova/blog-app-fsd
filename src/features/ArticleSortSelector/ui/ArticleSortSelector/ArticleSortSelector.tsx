@@ -20,17 +20,17 @@ interface ArticleSortSelectorProps {
 
 export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
   const { className, onChangeOrder, onChangeSort, order, sort } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'sorting' });
 
   const orderOptions = useMemo<SelectOption<SortOrder>[]>(
     () => [
       {
         value: 'asc',
-        content: t('возрастанию'),
+        content: t('asc'),
       },
       {
         value: 'desc',
-        content: t('убыванию'),
+        content: t('desc'),
       },
     ],
     [t],
@@ -40,15 +40,15 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
     () => [
       {
         value: ArticleSortField.CREATED,
-        content: t('дате создания'),
+        content: t('date'),
       },
       {
         value: ArticleSortField.TITLE,
-        content: t('названию'),
+        content: t('name'),
       },
       {
         value: ArticleSortField.VIEWS,
-        content: t('просмотрам'),
+        content: t('views'),
       },
     ],
     [t],
@@ -64,7 +64,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
           ])}
         >
           <VStack gap="8">
-            <Text text={t('Сортировать по:')} />
+            <Text text={t('title')} />
             <ListBox
               items={sortFieldOptions}
               value={sort}
@@ -82,13 +82,13 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
           <Select<ArticleSortField>
             options={sortFieldOptions}
-            label={t('Сортировать ПО')}
+            label={t('title')}
             value={sort}
             onChange={onChangeSort}
           />
           <Select
             options={orderOptions}
-            label={t('по')}
+            label={t('by')}
             value={order}
             onChange={onChangeOrder}
             className={cls.order}

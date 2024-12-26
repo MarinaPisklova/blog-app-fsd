@@ -15,7 +15,7 @@ interface ArticleRecommendationsListProps {
 export const ArticleRecommendationsList = memo(
   (props: ArticleRecommendationsListProps) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('articles', { keyPrefix: 'recommendations' });
     const {
       isLoading,
       data: articles,
@@ -34,8 +34,8 @@ export const ArticleRecommendationsList = memo(
       >
         <ToggleFeatures
           feature="isAppRedesigned"
-          on={<Text size="l" title={t('Рекомендуем')} />}
-          off={<TextDeprecated size={TextSize.L} title={t('Рекомендуем')} />}
+          on={<Text size="l" title={t('title')} />}
+          off={<TextDeprecated size={TextSize.L} title={t('title')} />}
         />
         <ArticleList articles={articles} target="_blank" />
       </VStack>

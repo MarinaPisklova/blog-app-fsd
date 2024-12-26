@@ -15,7 +15,7 @@ export interface ProfileRatingProps {
 
 const ProfileRating = memo((props: ProfileRatingProps) => {
   const { className, profileId } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile', { keyPrefix: 'rating' });
   const userData = useUserAuthData();
 
   const { data, isLoading } = useGetProfileRating({
@@ -66,10 +66,8 @@ const ProfileRating = memo((props: ProfileRatingProps) => {
       onAccept={onAccept}
       rate={rating?.rate}
       className={className}
-      title={t('Оцените профиль')}
-      feedbackTitle={t(
-        'Оставьте свой отзыв о профиле, это поможет улучшить качество',
-      )}
+      title={t('title')}
+      feedbackTitle={t('feedback')}
       hasFeedback
     />
   );

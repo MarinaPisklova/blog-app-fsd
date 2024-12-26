@@ -34,8 +34,8 @@ export const CountrySelect = memo(
     const props = {
       className,
       value,
-      defaultValue: t('Укажите страну'),
-      label: t('Укажите страну'),
+      defaultValue: t('selects.country'),
+      label: t('selects.country'),
       items: options,
       onChange: onChangeHandler,
       readonly,

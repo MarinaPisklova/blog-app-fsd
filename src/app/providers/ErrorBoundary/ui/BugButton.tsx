@@ -15,7 +15,7 @@ const BugButton = () => {
     if (error) throw new Error();
   }, [error]);
 
-  return <Button onClick={onThrow}>{t('Прокинуть ошибку')}</Button>;
+  return <Button onClick={onThrow}>{t('throw_error')}</Button>;
 };
 
 export default BugButton;

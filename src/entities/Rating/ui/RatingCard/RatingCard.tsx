@@ -39,7 +39,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     title,
     rate = 0,
   } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'rating' });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [starsCount, setStarsCount] = useState(rate);
   const [feedback, setFeedback] = useState('');
@@ -76,7 +76,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
             data-testid="RatingCard.Input"
             value={feedback}
             onChange={setFeedback}
-            placeholder={t('Ваш отзыв')}
+            placeholder={t('your_feedback')}
           />
         </>
       }
@@ -87,7 +87,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
             data-testid="RatingCard.Input"
             value={feedback}
             onChange={setFeedback}
-            placeholder={t('Ваш отзыв')}
+            placeholder={t('your_feedback')}
           />
         </>
       }
@@ -99,12 +99,8 @@ export const RatingCard = memo((props: RatingCardProps) => {
       <VStack align="center" gap="8" max>
         <ToggleFeatures
           feature="isAppRedesigned"
-          on={<Text title={starsCount ? t('Спасибо за оценку!') : title} />}
-          off={
-            <TextDepreacetd
-              title={starsCount ? t('Спасибо за оценку!') : title}
-            />
-          }
+          on={<Text title={starsCount ? t('thanks') : title} />}
+          off={<TextDepreacetd title={starsCount ? t('thanks') : title} />}
         />
         <StarRating
           selectedStars={starsCount}
@@ -121,10 +117,10 @@ export const RatingCard = memo((props: RatingCardProps) => {
               on={
                 <HStack max gap="16" justify="end">
                   <Button data-testid="RatingCard.Close" onClick={cancelHandle}>
-                    {t('Закрыть')}
+                    {t('close_btn')}
                   </Button>
                   <Button data-testid="RatingCard.Send" onClick={acceptHandle}>
-                    {t('Отправить')}
+                    {t('send_btn')}
                   </Button>
                 </HStack>
               }
@@ -135,13 +131,13 @@ export const RatingCard = memo((props: RatingCardProps) => {
                     onClick={cancelHandle}
                     theme={ButtonTheme.OUTLINE_RED}
                   >
-                    {t('Закрыть')}
+                    {t('close_btn')}
                   </ButtonDeprecated>
                   <ButtonDeprecated
                     data-testid="RatingCard.Send"
                     onClick={acceptHandle}
                   >
-                    {t('Отправить')}
+                    {t('send_btn')}
                   </ButtonDeprecated>
                 </HStack>
               }
@@ -157,7 +153,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
               feature="isAppRedesigned"
               on={
                 <Button fullWidth onClick={acceptHandle} size="l">
-                  {t('Отправить')}
+                  {t('send_btn')}
                 </Button>
               }
               off={
@@ -166,7 +162,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
                   onClick={acceptHandle}
                   size={ButtonSize.L}
                 >
-                  {t('Отправить')}
+                  {t('send_btn')}
                 </ButtonDeprecated>
               }
             />

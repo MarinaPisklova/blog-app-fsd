@@ -1,0 +1,54 @@
+{
+  "addCommentForm": {
+    "placeholder": "Type comment",
+    "submit_btn": "Send"
+  },
+  "gretting": {
+    "title": "Welcome to the articles page",
+    "text": "Here you can search and browse articles on various topics"
+  },
+  "rating": {
+    "feedback": "Leave your feedback on the article, it will help improve the quality",
+    "title": "Rate the article",
+    "send_btn": "Send",
+    "close_btn": "Close",
+    "thanks": "Thanks for rating!",
+    "your_feedback": "Your feedback"
+  },
+  "recommendations": {
+    "title": "Recommendations"
+  },
+  "comments": {
+    "title": "Comments",
+    "no_comments": "No comments yet"
+  },
+  "sorting": {
+    "title": "Sort by",
+    "asc": "ascending",
+    "date": "creation date",
+    "name": "name",
+    "by": "by",
+    "views": "views",
+    "desc": "descending"
+  },
+  "tabs": {
+    "IT": "IT",
+    "all": "All articles",
+    "science": "Science",
+    "economy": "Economy"
+  },
+  "buttons": {
+    "back_to_articles": "Back to articles",
+    "edit_btn": "Edit",
+    "read_more": "Read more"
+  },
+  "{{count}} views_zero": "{{count}} views",
+  "{{count}} views_one": "{{count}} view",
+  "{{count}} views_other": "{{count}} views",
+  "search": "Search",
+  "not_found": "Articles not found",
+  "loadingError": {
+    "articles": "An error occurred while loading articles",
+    "article": "An error occurred while loading the article"
+  }
+}

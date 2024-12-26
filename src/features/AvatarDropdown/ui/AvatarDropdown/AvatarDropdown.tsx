@@ -25,7 +25,7 @@ interface AvatarDropdownProps {
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
   const { className } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('translation', { keyPrefix: 'dropdown' });
   const dispatch = useAppDispatch();
   const isAdmin = useIsUserAdmin();
   const isManager = useIsUserManager();
@@ -46,24 +46,24 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
       ? [
           {
             id: '0',
-            content: t('Админка'),
+            content: t('admin'),
             href: getRouteAdmin(),
           },
         ]
       : []),
     {
       id: '1',
-      content: t('Профиль'),
+      content: t('profile'),
       href: getRouteProfile(authData.id),
     },
     {
       id: '2',
-      content: t('Настройки'),
+      content: t('settings'),
       href: getRouteSettings(),
     },
     {
       id: '3',
-      content: t('Выйти'),
+      content: t('logout'),
       onClick: onLogout,
     },
   ];
@@ -81,7 +81,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
       }
       off={
         <DropdownDeprecated
-          direction="bottom left"
+          direction="bottom right"
           className={classNames('', {}, [className])}
           items={items}
           trigger={

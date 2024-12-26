@@ -22,14 +22,14 @@ const SettingsPage = ({ className }: SettingsPageProps) => {
       on={
         <Card padding="24" variant="light" border="round" fullHeight>
           <VStack gap="16">
-            <Text title={t('settings')} />
+            <Text title={t('settings_page')} />
             <UiDesignSwitcher />
           </VStack>
         </Card>
       }
       off={
         <VStack gap="16">
-          <TextDeprecated size={TextSize.M} title={t('settings')} />
+          <TextDeprecated size={TextSize.M} title={t('settings_page')} />
           <UiDesignSwitcher />
         </VStack>
       }

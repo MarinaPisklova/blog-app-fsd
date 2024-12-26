@@ -16,7 +16,7 @@ interface CommentListProps {
 
 export const CommentList = memo((props: CommentListProps) => {
   const { className, isLoading, comments } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'comments' });
 
   if (isLoading) {
     return (
@@ -41,8 +41,8 @@ export const CommentList = memo((props: CommentListProps) => {
       ) : (
         <ToggleFeatures
           feature="isAppRedesigned"
-          on={<Text text={t('Комментарии отсутствуют')} />}
-          off={<TextDeprecated text={t('Комментарии отсутствуют')} />}
+          on={<Text text={t('no_comments')} />}
+          off={<TextDeprecated text={t('no_comments')} />}
         />
       )}
     </VStack>

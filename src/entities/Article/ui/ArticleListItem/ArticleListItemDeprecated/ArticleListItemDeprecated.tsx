@@ -22,7 +22,7 @@ import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 
 export const ArticleListItemDeprecated = memo((props: ArticleListItemProps) => {
   const { className, article, view, target } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'buttons' });
 
   const types = <Text text={article.type.join(', ')} className={cls.types} />;
   const views = (
@@ -64,7 +64,7 @@ export const ArticleListItemDeprecated = memo((props: ArticleListItemProps) => {
           )}
           <div className={cls.footer}>
             <AppLink target={target} to={getRouteArticleDetails(article.id)}>
-              <Button theme={ButtonTheme.OUTLINE}>{t('Читать далее')}</Button>
+              <Button theme={ButtonTheme.OUTLINE}>{t('read_more')}</Button>
             </AppLink>
             {views}
           </div>

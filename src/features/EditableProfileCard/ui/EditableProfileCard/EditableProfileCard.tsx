@@ -33,7 +33,7 @@ const reducers: ReducersList = {
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const { className, id } = props;
-  const { t } = useTranslation('profile');
+  const { t } = useTranslation('profile', { keyPrefix: 'errors' });
 
   const dispatch = useAppDispatch();
   const formData = useProfileForm();
@@ -43,11 +43,11 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const validateErrors = useProfileValidateErrors();
 
   const validateErrorTranslates = {
-    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
-    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
-    [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
-    [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
-    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+    [ValidateProfileError.SERVER_ERROR]: t('server'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('country'),
+    [ValidateProfileError.NO_DATA]: t('no_data'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('required'),
+    [ValidateProfileError.INCORRECT_AGE]: t('age'),
   };
 
   useInitialEffect(() => {

@@ -24,15 +24,20 @@ export const ErrorPage = ({ className }: ErrorPageProps) => {
       feature="isAppRedesigned"
       on={
         <>
-          <Text size="m" title={t('unexpected_error')} />
-          <Button onClick={reloadPage}>{t('reload_page_btn')}</Button>
+          <Text size="m" title={t('error_page.unexpected_error')} />
+          <Button onClick={reloadPage}>
+            {t('error_page.reload_page_btn')}
+          </Button>
         </>
       }
       off={
         <>
-          <TextDeprecated size={TextSize.M} title={t('unexpected_error')} />
+          <TextDeprecated
+            size={TextSize.M}
+            title={t('error_page.unexpected_error')}
+          />
           <ButtonDeprecated onClick={reloadPage}>
-            {t('reload_page_btn')}
+            {t('error_page.reload_page_btn')}
           </ButtonDeprecated>
         </>
       }

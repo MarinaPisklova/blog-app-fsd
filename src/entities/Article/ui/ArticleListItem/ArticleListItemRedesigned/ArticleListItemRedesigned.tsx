@@ -22,7 +22,7 @@ import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
   const { className, article, view, target } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'buttons' });
 
   const userInfo = (
     <>
@@ -70,7 +70,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
           )}
           <HStack max justify="between">
             <AppLink target={target} to={getRouteArticleDetails(article.id)}>
-              <Button variant="outline">{t('Читать далее')}</Button>
+              <Button variant="outline">{t('read_more')}</Button>
             </AppLink>
             {views}
           </HStack>

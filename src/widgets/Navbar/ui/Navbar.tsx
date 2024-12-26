@@ -22,7 +22,7 @@ export interface NavbarProps {
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('translation', { keyPrefix: 'navbar' });
   const [isAuthModal, setIsAuthModal] = useState(false);
   const authData = useUserAuthData();
 
@@ -56,7 +56,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           <header className={classNames(mainClass, {}, [className])}>
             <Text
               className={cls.appName}
-              title={t('Blog App')}
+              // eslint-disable-next-line i18next/no-literal-string
+              title="Blog App"
               theme={TextTheme.INVERTED}
             />
             <AppLink

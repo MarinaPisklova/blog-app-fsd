@@ -107,7 +107,7 @@ export const ArticleDetailsSkeleton = () => {
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const { className, id } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles');
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getArticleDetailsIsLoading);
   const error = useSelector(getArticleDetailsError);
@@ -126,7 +126,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     content = (
       <TextDeprecated
         align={TextAlign.CENTER}
-        title={t('Произошла ошибка при загрузке статьи')}
+        title={t('loadingError.articles')}
       />
     );
   } else {

@@ -55,7 +55,7 @@ export const EditableProfileCardHeader = memo(
               justify="between"
               className={classNames('', {}, [className])}
             >
-              <Text title={t('Профиль')} />
+              <Text title={t('profile_page')} />
               {canEdit && (
                 <div>
                   {readonly ? (
@@ -63,7 +63,7 @@ export const EditableProfileCardHeader = memo(
                       onClick={onEdit}
                       data-testid="EditableProfileCardHeader.EditButton"
                     >
-                      {t('Редактировать')}
+                      {t('editForm.edit_btn')}
                     </Button>
                   ) : (
                     <HStack gap="8">
@@ -72,14 +72,14 @@ export const EditableProfileCardHeader = memo(
                         data-testid="EditableProfileCardHeader.CancelButton"
                         color="error"
                       >
-                        {t('Отменить')}
+                        {t('editForm.cancel_btn')}
                       </Button>
                       <Button
                         onClick={onSave}
                         data-testid="EditableProfileCardHeader.SaveButton"
                         color="success"
                       >
-                        {t('Сохранить')}
+                        {t('editForm.save_btn')}
                       </Button>
                     </HStack>
                   )}
@@ -94,7 +94,7 @@ export const EditableProfileCardHeader = memo(
             justify="between"
             className={classNames('', {}, [className])}
           >
-            <TextDeprecated title={t('Профиль')} />
+            <TextDeprecated title={t('profile_page')} />
             {canEdit && (
               <div>
                 {readonly ? (
@@ -103,7 +103,7 @@ export const EditableProfileCardHeader = memo(
                     onClick={onEdit}
                     data-testid="EditableProfileCardHeader.EditButton"
                   >
-                    {t('Редактировать')}
+                    {t('editForm.edit_btn')}
                   </ButtonDeprecated>
                 ) : (
                   <HStack gap="8">
@@ -112,14 +112,14 @@ export const EditableProfileCardHeader = memo(
                       onClick={onCancelEdit}
                       data-testid="EditableProfileCardHeader.CancelButton"
                     >
-                      {t('Отменить')}
+                      {t('editForm.cancel_btn')}
                     </ButtonDeprecated>
                     <ButtonDeprecated
                       theme={ButtonTheme.OUTLINE}
                       onClick={onSave}
                       data-testid="EditableProfileCardHeader.SaveButton"
                     >
-                      {t('Сохранить')}
+                      {t('editForm.save_btn')}
                     </ButtonDeprecated>
                   </HStack>
                 )}

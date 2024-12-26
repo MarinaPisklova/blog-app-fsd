@@ -14,25 +14,25 @@ interface ArticleTypeTabsProps {
 
 export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
   const { className, value, onChangeType } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles', { keyPrefix: 'tabs' });
 
   const typeTabs = useMemo<TabItem[]>(
     () => [
       {
         value: ArticleType.ALL,
-        content: t('Все статьи'),
+        content: t('all'),
       },
       {
         value: ArticleType.IT,
-        content: t('Айти'),
+        content: t('IT'),
       },
       {
         value: ArticleType.ECONOMICS,
-        content: t('Экономика'),
+        content: t('economy'),
       },
       {
         value: ArticleType.SCIENCE,
-        content: t('Наука'),
+        content: t('science'),
       },
     ],
     [t],
