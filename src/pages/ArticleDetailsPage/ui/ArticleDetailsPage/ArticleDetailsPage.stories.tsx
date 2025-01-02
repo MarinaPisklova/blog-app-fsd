@@ -22,7 +22,7 @@ const mockArticle: Article = {
     username: 'user',
     avatar,
   },
-  type: [ArticleType.IT],
+  type: ArticleType.IT,
   blocks: [
     {
       id: '1',

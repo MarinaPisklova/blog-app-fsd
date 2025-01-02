@@ -26,6 +26,7 @@ interface ArticleListProps {
   view?: ArticleView;
   error?: string;
   onLoadNextPart?: () => void;
+  isRecommendations?: boolean;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -88,6 +89,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     target,
     error,
     onLoadNextPart,
+    isRecommendations = false,
   } = props;
   const { t } = useTranslation('articles');
 
@@ -126,6 +128,68 @@ export const ArticleList = memo((props: ArticleListProps) => {
     );
   }
 
+  const gridViewRedesigned = isRecommendations ? (
+    <>
+      {articles.map((article) => (
+        <ArticleListItem
+          article={article}
+          view={view}
+          target={target}
+          key={article.id}
+          className={cls.card}
+        />
+      ))}
+    </>
+  ) : (
+    <VirtuosoGrid
+      style={{ width: '100%' }}
+      useWindowScroll
+      endReached={onLoadNextPart}
+      components={getComponentsGrid(isLoading ?? false, view)}
+      data={articles}
+      // eslint-disable-next-line react/no-unstable-nested-components
+      itemContent={(_, item) => (
+        <ArticleListItem
+          article={item}
+          view={view}
+          target={target}
+          key={item.id}
+          className={cls.card}
+        />
+      )}
+    />
+  );
+
+  const gridViewDeprecated = isRecommendations ? (
+    <>
+      {articles.map((article) => (
+        <ArticleListItem
+          article={article}
+          view={view}
+          target={target}
+          key={article.id}
+          className={cls.card}
+        />
+      ))}
+    </>
+  ) : (
+    <VirtuosoGrid
+      endReached={onLoadNextPart}
+      components={getComponentsGrid(isLoading ?? false, view)}
+      data={articles}
+      // eslint-disable-next-line react/no-unstable-nested-components
+      itemContent={(_, item) => (
+        <ArticleListItem
+          article={item}
+          view={view}
+          target={target}
+          key={item.id}
+          className={cls.card}
+        />
+      )}
+    />
+  );
+
   return (
     <ToggleFeatures
       feature="isAppRedesigned"
@@ -155,23 +219,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
               components={getComponentsListRedesigned(isLoading ?? false, view)}
             />
           ) : (
-            <VirtuosoGrid
-              style={{ width: '100%' }}
-              useWindowScroll
-              endReached={onLoadNextPart}
-              components={getComponentsGrid(isLoading ?? false, view)}
-              data={articles}
-              // eslint-disable-next-line react/no-unstable-nested-components
-              itemContent={(_, item) => (
-                <ArticleListItem
-                  article={item}
-                  view={view}
-                  target={target}
-                  key={item.id}
-                  className={cls.card}
-                />
-              )}
-            />
+            gridViewRedesigned
           )}
         </HStack>
       }
@@ -197,21 +245,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
               )}
             />
           ) : (
-            <VirtuosoGrid
-              endReached={onLoadNextPart}
-              components={getComponentsGrid(isLoading ?? false, view)}
-              data={articles}
-              // eslint-disable-next-line react/no-unstable-nested-components
-              itemContent={(_, item) => (
-                <ArticleListItem
-                  article={item}
-                  view={view}
-                  target={target}
-                  key={item.id}
-                  className={cls.card}
-                />
-              )}
-            />
+            gridViewDeprecated
           )}
         </div>
       }

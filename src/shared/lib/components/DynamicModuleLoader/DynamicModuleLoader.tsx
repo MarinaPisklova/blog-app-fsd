@@ -35,7 +35,6 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (
         dispatch({ type: `@INIT ${name} reducer` });
       }
     });
-
     return () => {
       if (removeAfterUnmount) {
         Object.entries(reducers).forEach(([name]) => {

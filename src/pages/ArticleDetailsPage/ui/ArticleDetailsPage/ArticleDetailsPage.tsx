@@ -31,7 +31,7 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const { id } = useParams<{ id: string }>();
-  const { t } = useTranslation('article-details');
+  const { t } = useTranslation('article');
 
   if (!id) {
     return null;
@@ -65,7 +65,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
               <ToggleFeatures
                 feature="isArticleRatingEnabled"
                 on={<ArticleRating articleId={id} />}
-                off={<Card>{t('Оценка статей скоро появится!')}</Card>}
+                off={<Card>{t('rating.rating_soon')}</Card>}
               />
               <ArticleRecommendationsList />
               <ArticleDetailsComments id={id} />

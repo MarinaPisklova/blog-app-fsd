@@ -29,7 +29,7 @@ export const ArticleRecommendationsList = memo(
     return (
       <VStack
         data-testid="ArticleRecommendationsList"
-        gap="8"
+        gap="16"
         className={classNames('', {}, [className])}
       >
         <ToggleFeatures
@@ -37,7 +37,7 @@ export const ArticleRecommendationsList = memo(
           on={<Text size="l" title={t('title')} />}
           off={<TextDeprecated size={TextSize.L} title={t('title')} />}
         />
-        <ArticleList articles={articles} target="_blank" />
+        <ArticleList articles={articles} target="_blank" isRecommendations />
       </VStack>
     );
   },

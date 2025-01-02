@@ -3,7 +3,7 @@ import { memo, useCallback, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
-import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { useArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
@@ -26,7 +26,7 @@ export const ArticleDetailsComments = memo(
     const { className, id } = props;
     const { t } = useTranslation('articles', { keyPrefix: 'comments' });
     const comments = useSelector(getArticleComments.selectAll);
-    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+    const commentsIsLoading = useArticleCommentsIsLoading();
     const dispatch = useAppDispatch();
 
     const onSendComment = useCallback(

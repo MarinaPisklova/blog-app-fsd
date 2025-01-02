@@ -1,12 +1,11 @@
 import { memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ArticleAdditionalInfo } from '@/widgets/ArticleAdditionalInfo';
-import { getArticleDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit } from '@/shared/const/router';
+import { useArticleDetailsData } from '@/entities/Article';
 
 export const AdditionalInfoContainer = memo(() => {
-  const article = useSelector(getArticleDetailsData);
+  const article = useArticleDetailsData();
 
   const navigate = useNavigate();
 

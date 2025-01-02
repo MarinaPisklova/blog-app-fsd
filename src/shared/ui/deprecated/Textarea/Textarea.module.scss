@@ -1,0 +1,59 @@
+.TextareaWrapper {
+  display: flex;
+  border: 1px solid var(--primary-color);
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.placeholder {
+  margin-right: 5px;
+}
+
+.textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: transparent;
+  text-shadow: 0 0 0 var(--primary-color);
+  resize: vertical;
+  height: 200px;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.caretWrapper {
+  flex-grow: 1;
+  position: relative;
+}
+
+.caret {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 9px;
+  background-color: var(--primary-color);
+  animation: blink 0.7s forwards infinite;
+}
+
+.readonly {
+  opacity: 0.7;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -21,3 +21,9 @@ export enum ArticleView {
   BIG = 'BIG',
   SMALL = 'SMALL',
 }
+
+export const ARTICLE_TYPES = [
+  ArticleType.IT,
+  ArticleType.SCIENCE,
+  ArticleType.ECONOMICS,
+];

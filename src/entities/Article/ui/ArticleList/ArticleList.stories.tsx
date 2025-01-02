@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Article } from '../../model/types/article';
-import { ArticleView } from '../../model/consts/articleConsts';
+import { ArticleType, ArticleView } from '../../model/consts/articleConsts';
 import { ArticleList } from './ArticleList';
 
 export default {
@@ -29,7 +29,7 @@ const article = {
     avatar:
       'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
   },
-  type: ['IT', 'SCIENCE', 'POLITICS', 'ECONOMICS'],
+  type: ArticleType.SCIENCE,
   blocks: [
     {
       id: '1',

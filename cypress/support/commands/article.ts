@@ -9,7 +9,7 @@ const defaultArticle = {
   views: 1022,
   createdAt: '26.02.2022',
   userId: '1',
-  type: ['SCIENCE'],
+  type: 'SCIENCE',
   blocks: [],
 };
 

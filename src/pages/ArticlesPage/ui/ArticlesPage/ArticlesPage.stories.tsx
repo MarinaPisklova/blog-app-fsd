@@ -28,7 +28,7 @@ const mockRequest = {
       views: 500,
       createdAt: '26.02.2022',
       userId: '1',
-      type: ['IT'],
+      type: 'IT',
       user: {
         username: 'admin',
       },
@@ -41,7 +41,7 @@ const mockRequest = {
       views: 1022,
       createdAt: '26.12.2022',
       userId: '2',
-      type: ['IT', 'ECONOMICS'],
+      type: 'ECONOMICS',
       user: {
         username: 'admin',
       },
@@ -54,7 +54,7 @@ const mockRequest = {
       views: 10,
       createdAt: '06.08.2023',
       userId: '1',
-      type: ['IT', 'SCIENCE'],
+      type: 'SCIENCE',
       user: {
         username: 'admin',
       },
