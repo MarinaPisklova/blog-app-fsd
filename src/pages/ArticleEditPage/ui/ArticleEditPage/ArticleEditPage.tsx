@@ -7,7 +7,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { ArticleDetailsEdit, ArticleSaveButton } from '@/entities/Article';
+import {
+  ArticleDetailsEdit,
+  ArticleSaveButton,
+  BackToArticleButton,
+} from '@/entities/Article';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { Card } from '@/shared/ui/redesigned/Card';
@@ -44,7 +48,10 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
           }
           right={
             <Card padding="24" border="partial" className={cls.card}>
-              <ArticleSaveButton />
+              <VStack gap="8">
+                <ArticleSaveButton />
+                {isEdit && <BackToArticleButton />}
+              </VStack>
             </Card>
           }
         />
@@ -57,7 +64,11 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
           <VStack gap="16" max>
             <HStack justify="between" max>
               <TextDeprecated size={TextSize.M} title={title} />
-              <ArticleSaveButton />
+
+              <HStack gap="8">
+                <ArticleSaveButton />
+                {isEdit && <BackToArticleButton />}
+              </HStack>
             </HStack>
             <ArticleDetailsEdit id={id} />
           </VStack>

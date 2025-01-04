@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useArticleDetailsData } from '../../model/selectors/articleDetails';
 import { ArticleBlock } from '../../model/types/article';
 import { ARTICLE_TYPES, ArticleType } from '../../model/consts/articleConsts';
+import { AddArticleBlockDropdown } from '../AddArticleBlockDropdown/AddArticleBlockDropdown';
 import cls from './ArticleDetailsEdit.module.scss';
 import { renderArticleEditBlock } from './renderBlock';
 import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
@@ -33,7 +34,7 @@ export const ArticleDetailsEditDeprecated = (
   const article = useArticleDetailsData();
   const { t } = useTranslation('articles', { keyPrefix: 'edit' });
 
-  const onChangeCodeBlock = useCallback(
+  const onChangeBlock = useCallback(
     (block: ArticleBlock, id: string) => {
       const updatedBlocks = article?.blocks.map((b) =>
         b.id === id ? block : b,
@@ -44,6 +45,14 @@ export const ArticleDetailsEditDeprecated = (
     [article?.blocks, onChangeBlocks],
   );
 
+  const onDeleteBlock = useCallback(
+    (id: string) => {
+      const updatedBlocks = article?.blocks.filter((b) => b.id !== id);
+
+      onChangeBlocks?.(updatedBlocks ?? []);
+    },
+    [article?.blocks, onChangeBlocks],
+  );
   return (
     <VStack gap="16" max>
       <CardDeprecated max>
@@ -81,8 +90,12 @@ export const ArticleDetailsEditDeprecated = (
           />
         </VStack>
       </CardDeprecated>
-
-      {article?.blocks.map(renderArticleEditBlock(onChangeCodeBlock))}
+      {article?.blocks.map(
+        renderArticleEditBlock(onChangeBlock, onDeleteBlock),
+      )}
+      <HStack justify="center" max>
+        <AddArticleBlockDropdown onChangeBlocks={onChangeBlocks} />
+      </HStack>
     </VStack>
   );
 };

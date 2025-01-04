@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArticleAdditionalInfo } from '@/widgets/ArticleAdditionalInfo';
-import { getRouteArticleEdit } from '@/shared/const/router';
+import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
 import { useArticleDetailsData } from '@/entities/Article';
 
 export const AdditionalInfoContainer = memo(() => {
@@ -15,6 +15,10 @@ export const AdditionalInfoContainer = memo(() => {
     }
   }, [article, navigate]);
 
+  const onBackToList = useCallback(() => {
+    navigate(getRouteArticles());
+  }, [navigate]);
+
   if (!article) {
     return null;
   }
@@ -22,6 +26,7 @@ export const AdditionalInfoContainer = memo(() => {
   return (
     <ArticleAdditionalInfo
       onEdit={onEditArticle}
+      onBack={onBackToList}
       author={article.user}
       createdAt={article.createdAt}
       views={article.views}

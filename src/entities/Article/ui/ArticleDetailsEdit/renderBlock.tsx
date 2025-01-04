@@ -6,7 +6,10 @@ import { ArticleTextEditBlockComponent } from '../ArticleTextEditBlockComponent/
 import cls from './ArticleDetailsEdit.module.scss';
 
 export const renderArticleEditBlock =
-  (onChangeBlock?: (block: ArticleBlock, id: string) => void) =>
+  (
+    onChangeBlock?: (block: ArticleBlock, id: string) => void,
+    onDeleteBlock?: (id: string) => void,
+  ) =>
   (block: ArticleBlock) => {
     const { type, id } = block;
     switch (type) {
@@ -17,6 +20,7 @@ export const renderArticleEditBlock =
             block={block}
             className={cls.block}
             onChangeBlock={onChangeBlock}
+            onDeleteBlock={onDeleteBlock}
           />
         );
       }
@@ -27,6 +31,7 @@ export const renderArticleEditBlock =
             block={block}
             className={cls.block}
             onChangeBlock={onChangeBlock}
+            onDeleteBlock={onDeleteBlock}
           />
         );
       case ArticleBlockType.TEXT:
@@ -36,6 +41,7 @@ export const renderArticleEditBlock =
             className={cls.block}
             block={block}
             onChangeBlock={onChangeBlock}
+            onDeleteBlock={onDeleteBlock}
           />
         );
       default:

@@ -56,13 +56,15 @@
     "title": "Title",
     "subtitle": "Subtitle",
     "save_btn": "Save",
+    "delete_btn": "Delete",
+    "add_btn": "Add block",
+    "back_btn": "Back",
     "image": "Image",
     "image_caption": "Image caption",
     "main_info": "Main information",
     "code_block": "Code block",
     "text_block": "Text block",
     "image_block": "Image block",
-    "paragraphs": "Paragraphs",
     "type": "Category"
   }
 }

@@ -14,17 +14,20 @@ import { Input } from '@/shared/ui/redesigned/Input';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
-import { VStack } from '@/shared/ui/redesigned/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 
 interface ArticleImageBlockComponentProps {
   className?: string;
   block: ArticleImageBlock;
   onChangeBlock?: (blocks: ArticleBlock, id: string) => void;
+  onDeleteBlock?: (id: string) => void;
 }
 
 export const ArticleImageEditBlockComponent = memo(
   (props: ArticleImageBlockComponentProps) => {
-    const { className, block, onChangeBlock } = props;
+    const { className, block, onChangeBlock, onDeleteBlock } = props;
     const { t } = useTranslation('articles', { keyPrefix: 'edit' });
 
     const onChangeImg = (value: string) => {
@@ -56,7 +59,13 @@ export const ArticleImageEditBlockComponent = memo(
           on={
             <Card padding="24" max border="partial">
               <VStack gap="16" max>
-                <Text title={t('image_block')} size="m" />
+                <HStack justify="between" max>
+                  <Text title={t('image_block')} size="m" />
+                  <Button onClick={() => onDeleteBlock?.(block.id)}>
+                    {t('delete_btn')}
+                  </Button>
+                </HStack>
+
                 <img src={block.src} alt={block.title} className={cls.img} />
                 {block.title && <Text text={block.title} align="center" />}
 
@@ -76,7 +85,13 @@ export const ArticleImageEditBlockComponent = memo(
           off={
             <CardDeprecated max>
               <VStack gap="16" max>
-                <TextDeprecated title={t('image_block')} size={TextSize.M} />
+                <HStack justify="between" max>
+                  <TextDeprecated title={t('image_block')} size={TextSize.M} />
+                  <ButtonDeprecated onClick={() => onDeleteBlock?.(block.id)}>
+                    {t('delete_btn')}
+                  </ButtonDeprecated>
+                </HStack>
+
                 <img src={block.src} alt={block.title} className={cls.img} />
                 {block.title && (
                   <TextDeprecated text={block.title} align={TextAlign.CENTER} />

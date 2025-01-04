@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Article } from '../../types/article';
 import { getArticleDetailsData } from '../../selectors/articleDetails';
+import { deleteEmptyBlocks } from '../../../lib/deleteEmptyBlocks';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 export const updateArticleData = createAsyncThunk<
@@ -15,7 +16,10 @@ export const updateArticleData = createAsyncThunk<
   try {
     const response = await extra.api.put<Article>(
       `/articles/${articleData?.id}`,
-      articleData,
+      {
+        ...articleData,
+        blocks: deleteEmptyBlocks(articleData?.blocks || []),
+      },
     );
 
     if (!response.data) {

@@ -1,6 +1,7 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 export { ArticleDetailsEdit } from './ui/ArticleDetailsEdit/ArticleDetailsEdit';
 export { ArticleSaveButton } from './ui/ArticleSaveButton/ArticleSaveButton';
+export { BackToArticleButton } from './ui/BackToArticleButton/BackToArticleButton';
 
 export type { Article } from './model/types/article';
 
