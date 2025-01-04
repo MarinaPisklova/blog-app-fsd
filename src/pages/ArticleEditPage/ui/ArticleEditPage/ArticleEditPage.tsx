@@ -11,6 +11,7 @@ import {
   ArticleDetailsEdit,
   ArticleSaveButton,
   BackToArticleButton,
+  ArticleEditErrorBlock,
 } from '@/entities/Article';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
@@ -42,6 +43,7 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
                 <Card padding="24" max border="partial">
                   <Text size="m" title={title} />
                 </Card>
+                <ArticleEditErrorBlock />
                 <ArticleDetailsEdit id={id} />
               </VStack>
             </Page>
@@ -70,6 +72,7 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
                 {isEdit && <BackToArticleButton />}
               </HStack>
             </HStack>
+            <ArticleEditErrorBlock />
             <ArticleDetailsEdit id={id} />
           </VStack>
         </Page>

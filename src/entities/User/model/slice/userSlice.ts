@@ -30,6 +30,15 @@ export const userSlice = createSlice({
       state.authData = undefined;
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
     },
+    updateProfileInfo: (
+      state,
+      action: PayloadAction<{ username: string; avatar: string }>,
+    ) => {
+      if (state.authData) {
+        state.authData.avatar = action.payload.avatar;
+        state.authData.username = action.payload.username;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(

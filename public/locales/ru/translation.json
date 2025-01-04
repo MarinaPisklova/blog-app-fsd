@@ -23,7 +23,8 @@
     "admin": "Админка",
     "profile": "Профиль",
     "settings": "Настройки",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "create_article": "Создать статью"
   },
   "sidebar": {
     "main_page": "Главная страница",

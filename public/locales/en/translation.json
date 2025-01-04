@@ -16,7 +16,8 @@
     "admin": "Admin.panel",
     "profile": "Profile",
     "settings": "Settings",
-    "logout": "Log out"
+    "logout": "Log out",
+    "create_article": "Create article"
   },
   "settings": {
     "design": {

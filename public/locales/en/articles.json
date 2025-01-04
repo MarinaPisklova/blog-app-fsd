@@ -65,6 +65,11 @@
     "code_block": "Code block",
     "text_block": "Text block",
     "image_block": "Image block",
-    "type": "Category"
+    "type": "Category",
+    "errors": {
+      "no_title": "Title cannot be empty",
+      "no_image": "Image is required",
+      "no_blocks": "The article must have at least one non-empty block"
+    }
   }
 }

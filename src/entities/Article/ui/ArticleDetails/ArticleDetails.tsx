@@ -94,13 +94,31 @@ export const ArticleDetailsSkeleton = () => {
     off: () => SkeletonDeprecated,
   });
   return (
-    <VStack gap="16" max>
-      <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
-      <Skeleton className={cls.title} width={300} height={32} />
-      <Skeleton className={cls.skeleton} width={600} height={24} />
-      <Skeleton className={cls.skeleton} width="100%" height={200} />
-      <Skeleton className={cls.skeleton} width="100%" height={200} />
-    </VStack>
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      on={
+        <VStack gap="16" max>
+          <Skeleton className={cls.title} width={300} height={32} />
+          <Skeleton className={cls.skeleton} width={600} height={24} />
+          <Skeleton className={cls.skeleton} width="100%" height={200} />
+          <Skeleton className={cls.skeleton} width="100%" height={200} />
+        </VStack>
+      }
+      off={
+        <VStack gap="16" max>
+          <Skeleton
+            className={cls.avatar}
+            width={200}
+            height={200}
+            border="50%"
+          />
+          <Skeleton className={cls.title} width={300} height={32} />
+          <Skeleton className={cls.skeleton} width={600} height={24} />
+          <Skeleton className={cls.skeleton} width="100%" height={200} />
+          <Skeleton className={cls.skeleton} width="100%" height={200} />
+        </VStack>
+      }
+    />
   );
 };
 
@@ -123,9 +141,15 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     content = <ArticleDetailsSkeleton />;
   } else if (error) {
     content = (
-      <TextDeprecated
-        align={TextAlign.CENTER}
-        title={t('loadingError.articles')}
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={<Text title={t('loadingError.articles')} />}
+        off={
+          <TextDeprecated
+            align={TextAlign.CENTER}
+            title={t('loadingError.articles')}
+          />
+        }
       />
     );
   } else {

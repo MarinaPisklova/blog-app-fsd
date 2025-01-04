@@ -4,13 +4,14 @@ import { validateProfileData } from '../validateProfileData/validateProfileData'
 import { ValidateProfileError } from '../../consts/consts';
 import { Profile } from '@/entities/Profile';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { userActions } from '@/entities/User';
 
 export const updateProfileData = createAsyncThunk<
   Profile,
   void,
   ThunkConfig<ValidateProfileError[]>
 >('profile/updateProfileData', async (_, thunkApi) => {
-  const { extra, rejectWithValue, getState } = thunkApi;
+  const { extra, rejectWithValue, getState, dispatch } = thunkApi;
 
   const formData = getProfileForm(getState());
   const errors = validateProfileData(formData);
@@ -21,13 +22,20 @@ export const updateProfileData = createAsyncThunk<
 
   try {
     const response = await extra.api.put<Profile>(
-      `/profile/${formData?.id}`,
+      `/profiles/${formData?.id}`,
       formData,
     );
 
     if (!response.data) {
       throw new Error();
     }
+
+    dispatch(
+      userActions.updateProfileInfo({
+        username: formData?.username ?? '',
+        avatar: formData?.avatar ?? '',
+      }),
+    );
 
     return response.data;
   } catch (error) {

@@ -12,10 +12,11 @@ import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import {
   getRouteAdmin,
+  getRouteArticleCreate,
   getRouteProfile,
   getRouteSettings,
 } from '@/shared/const/router';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
@@ -41,7 +42,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     return null;
   }
 
-  const items = [
+  const commonItems = [
     ...(isAdminPanelAvailable
       ? [
           {
@@ -67,6 +68,17 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
       onClick: onLogout,
     },
   ];
+
+  const items = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () =>
+      commonItems.concat({
+        id: '4',
+        content: t('create_article'),
+        href: getRouteArticleCreate(),
+      }),
+    off: () => commonItems,
+  });
 
   return (
     <ToggleFeatures

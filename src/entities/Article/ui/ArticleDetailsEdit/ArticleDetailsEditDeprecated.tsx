@@ -10,7 +10,6 @@ import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { ListBox } from '@/shared/ui/deprecated/Popups';
 
 interface ArticleDetailsEditProps {
@@ -53,28 +52,35 @@ export const ArticleDetailsEditDeprecated = (
     },
     [article?.blocks, onChangeBlocks],
   );
+
   return (
     <VStack gap="16" max>
       <CardDeprecated max>
         <VStack gap="16" max>
           <TextDeprecated title={t('main_info')} size={TextSize.M} />
           <InputDeprecated
-            value={article?.title}
+            value={article?.title ?? ''}
             placeholder={t('title')}
             onChange={onChangeTitle}
             className={cls.input}
           />
           <InputDeprecated
-            value={article?.subtitle}
+            value={article?.subtitle ?? ''}
             placeholder={t('subtitle')}
             onChange={onChangeSubtitle}
             className={cls.input}
           />
-          <HStack justify="center" max className={cls.avatarWrapper}>
-            <Avatar size={200} src={article?.img} className={cls.avatar} />
-          </HStack>
+          {article?.img && (
+            <HStack justify="center" max className={cls.avatarWrapper}>
+              <img
+                src={article?.img}
+                className={cls.avatar}
+                alt={article?.title}
+              />
+            </HStack>
+          )}
           <InputDeprecated
-            value={article?.img}
+            value={article?.img ?? ''}
             placeholder={t('image')}
             onChange={onChangeImg}
             className={cls.input}
@@ -85,14 +91,15 @@ export const ArticleDetailsEditDeprecated = (
               value: item,
               content: item,
             }))}
-            value={article?.type}
+            value={article?.type ?? ArticleType.IT}
             onChange={(value: string) => onChangeType?.(value as ArticleType)}
           />
         </VStack>
       </CardDeprecated>
-      {article?.blocks.map(
-        renderArticleEditBlock(onChangeBlock, onDeleteBlock),
-      )}
+      {article?.blocks &&
+        article.blocks.map(
+          renderArticleEditBlock(onChangeBlock, onDeleteBlock),
+        )}
       <HStack justify="center" max>
         <AddArticleBlockDropdown onChangeBlocks={onChangeBlocks} />
       </HStack>

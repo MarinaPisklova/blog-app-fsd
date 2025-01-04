@@ -62,22 +62,24 @@ export const ArticleDetailsEditRedesigned = (
           <VStack gap="16" max>
             <Text title={t('main_info')} size="m" />
             <Input
-              value={article?.title}
+              value={article?.title ?? ''}
               label={t('title')}
               onChange={onChangeTitle}
             />
             <Input
-              value={article?.subtitle}
+              value={article?.subtitle ?? ''}
               label={t('subtitle')}
               onChange={onChangeSubtitle}
             />
-            <AppImage
-              fallback={<Skeleton width="100%" height={420} border="16px" />}
-              src={article?.img}
-              className={cls.img}
-            />
+            {article?.img && (
+              <AppImage
+                fallback={<Skeleton width="100%" height={420} border="16px" />}
+                src={article?.img}
+                className={cls.img}
+              />
+            )}
             <Input
-              value={article?.img}
+              value={article?.img ?? ''}
               label={t('image')}
               onChange={onChangeImg}
             />
@@ -87,16 +89,17 @@ export const ArticleDetailsEditRedesigned = (
                 value: item,
                 content: item,
               }))}
-              value={article?.type}
+              value={article?.type ?? ArticleType.IT}
               onChange={onChangeType}
             />
           </VStack>
         </Card>
       </VStack>
 
-      {article?.blocks.map(
-        renderArticleEditBlock(onChangeBlock, onDeleteBlock),
-      )}
+      {article?.blocks &&
+        article?.blocks.map(
+          renderArticleEditBlock(onChangeBlock, onDeleteBlock),
+        )}
       <HStack justify="center" max>
         <AddArticleBlockDropdown onChangeBlocks={onChangeBlocks} />
       </HStack>

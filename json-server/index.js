@@ -1,6 +1,6 @@
 const fs = require('fs');
-const jsonServer = require('json-server');
 const path = require('path');
+const jsonServer = require('json-server');
 
 const server = jsonServer.create();
 
@@ -38,6 +38,27 @@ server.post('/login', (req, res) => {
     console.log(e);
     return res.status(500).json({ message: e.message });
   }
+});
+
+server.put('/profiles/:id', (req, res) => {
+  const profileId = req.params.id;
+  const updates = req.body;
+
+  const profile = router.db.get('profiles').find({ id: profileId }).value();
+
+  if (!profile) {
+    return res.status(404).send({ error: 'Profile not found' });
+  }
+
+  router.db.get('profiles').find({ id: profileId }).assign(updates).write();
+
+  const userUpdates = {
+    avatar: updates.avatar,
+    name: updates.name,
+  };
+  router.db.get('users').find({ id: profileId }).assign(userUpdates).write();
+
+  res.send(updates); // Ответ клиенту
 });
 
 server.use((req, res, next) => {

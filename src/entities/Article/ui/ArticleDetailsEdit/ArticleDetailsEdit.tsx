@@ -20,6 +20,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { Text as TextDeprecated, TextAlign } from '@/shared/ui/deprecated/Text';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
@@ -118,9 +119,15 @@ export const ArticleDetailsEdit = memo((props: ArticleDetailsProps) => {
     content = <ArticleEditSkeleton />;
   } else if (error) {
     content = (
-      <TextDeprecated
-        align={TextAlign.CENTER}
-        title={t('loadingError.articles')}
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={<Text title={t('loadingError.articles')} />}
+        off={
+          <TextDeprecated
+            align={TextAlign.CENTER}
+            title={t('loadingError.articles')}
+          />
+        }
       />
     );
   } else {

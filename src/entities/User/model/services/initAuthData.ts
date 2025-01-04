@@ -20,7 +20,6 @@ export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
 
     try {
       const response = await dispatch(getUserDataByIdQuery(userId)).unwrap();
-
       localStorage.setItem(
         THEME_LAST_DESIGN_LOCALSTORAGE_KEY,
         response.features?.isAppRedesigned ? 'new' : 'old',

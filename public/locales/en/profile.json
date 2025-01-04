@@ -6,7 +6,7 @@
     "country": "Incorrect country",
     "no_data": "Data not specified",
     "required": "First and last name are required",
-    "dowload": {
+    "download": {
       "title": "An error occurred while loading the profile",
       "text": "Try refreshing the page"
     }

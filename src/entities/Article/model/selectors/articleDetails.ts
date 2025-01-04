@@ -9,6 +9,13 @@ export const [useArticleDetailsError, getArticleDetailsError] = buildSelector(
   (state: StateSchema) => state.articleDetails?.error,
 );
 
+export const [
+  useArticleDetailsValidationError,
+  getArticleDetailsValidationError,
+] = buildSelector(
+  (state: StateSchema) => state.articleDetails?.validationErrors,
+);
+
 export const [useArticleDetailsIsLoading, getArticleDetailsIsLoading] =
   buildSelector(
     (state: StateSchema) => state.articleDetails?.isLoading || false,

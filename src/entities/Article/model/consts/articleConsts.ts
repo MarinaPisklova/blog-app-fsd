@@ -27,3 +27,9 @@ export const ARTICLE_TYPES = [
   ArticleType.SCIENCE,
   ArticleType.ECONOMICS,
 ];
+
+export enum ValidateArticleError {
+  NO_TITLE = 'NO_TITLE',
+  NO_IMAGE = 'NO_IMAGE',
+  NO_BLOCKS = 'NO_BLOCKS',
+}
