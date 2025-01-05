@@ -31,7 +31,7 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const { id } = useParams<{ id: string }>();
-  const { t } = useTranslation('article');
+  const { t } = useTranslation('articles');
 
   if (!id) {
     return null;

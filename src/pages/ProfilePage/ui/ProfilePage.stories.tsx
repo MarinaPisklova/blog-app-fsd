@@ -51,17 +51,6 @@ const Template: ComponentStory<typeof ProfilePage> = (args) => (
   </Routes>
 );
 
-export const NormalTheme = Template.bind({});
-NormalTheme.args = {};
-
-export const DarkTheme = Template.bind({});
-DarkTheme.args = {};
-DarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const PurpleTheme = Template.bind({});
-PurpleTheme.args = {};
-PurpleTheme.decorators = [ThemeDecorator(Theme.PURPLE)];
-
 export const RedesignedNormalTheme = Template.bind({});
 RedesignedNormalTheme.args = {};
 RedesignedNormalTheme.decorators = [NewDesignDecorator];

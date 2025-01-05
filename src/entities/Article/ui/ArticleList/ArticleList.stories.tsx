@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Article } from '../../model/types/article';
 import { ArticleType, ArticleView } from '../../model/consts/articleConsts';
 import { ArticleList } from './ArticleList';
+import img from '@/shared/assets/tests/storybook.jpg';
 
 export default {
   title: 'entities/Article/ArticleList',
@@ -20,14 +21,13 @@ const article = {
   id: '1',
   title: 'Javascript news asfasjf asfjkask f',
   subtitle: 'Что нового в JS за 2022 год?',
-  img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+  img,
   views: 1022,
   createdAt: '26.02.2022',
   user: {
     id: '1',
     username: 'Ulbi tv',
-    avatar:
-      'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
+    avatar: img,
   },
   type: ArticleType.SCIENCE,
   blocks: [
@@ -58,7 +58,7 @@ const article = {
     {
       id: '2',
       type: 'IMAGE',
-      src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
+      src: img,
       title: 'Рисунок 1 - скриншот сайта',
     },
     {
@@ -78,7 +78,7 @@ const article = {
     {
       id: '8',
       type: 'IMAGE',
-      src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
+      src: img,
       title: 'Рисунок 1 - скриншот сайта',
     },
     {

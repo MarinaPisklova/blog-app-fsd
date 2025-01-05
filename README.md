@@ -1,4 +1,26 @@
-## Запуск проекта
+## Развернутый проект
+
+- Netlify (Frontend)
+  Frontend-раздел проекта развернут на платформе [Netlify](https://www.netlify.com/).
+  Ссылка на развернутую версию: https://luxury-choux-dd3001.netlify.app/
+
+- Vercel (Backend)
+  Backend проекта (на базе JSON Server) развернут на платформе [Vercel](https://vercel.com/).
+  Ссылка на развернутую версию: https://production-app-server-nu.vercel.app/
+
+Поскольку Vercel разрешает только читать файлы (например, db.json, в котором лежат мок данные),
+соответственно протестировать изменение/добавление данных не представляется возможным. Для доступа ко всем возможностям, необходимо развернуть проект локально.
+
+Залогиниться можно под тремя пользователями:
+
+1. username: admin
+   password: 123
+2. username: user
+   password: 123
+3. username: manager
+   password: 123
+
+## Запуск проекта локально
 
 ```
 npm install - устанавливаем зависимости
@@ -192,32 +214,3 @@ of: функция, которая отработает после ВЫключ�
 
 1. Название удаляемого фича-флага
 2. Состояние (on\off)
-
----
-
-## Сущности (entities)
-
-- [Article](/src/entities/Article)
-- [Comment](/src/entities/Comment)
-- [Counter](/src/entities/Counter)
-- [Country](/src/entities/Country)
-- [Currency](/src/entities/Currency)
-- [Notification](/src/entities/Notification)
-- [Profile](/src/entities/Profile)
-- [Rating](/src/entities/Rating)
-- [User](/src/entities/User)
-
-## Фичи (features)
-
-- [addCommentForm](/src/features/addCommentForm)
-- [articleEditForm](/src/features/articleEditForm)
-- [articleRating](/src/features/articleRating)
-- [articleRecommendationsList](/src/features/articleRecommendationsList)
-- [AuthByUsername](/src/features/AuthByUsername)
-- [avatarDropdown](/src/features/avatarDropdown)
-- [editableProfileCard](/src/features/editableProfileCard)
-- [LangSwitcher](/src/features/LangSwitcher)
-- [notificationButton](/src/features/notificationButton)
-- [profileRating](/src/features/profileRating)
-- [ThemeSwitcher](/src/features/ThemeSwitcher)
-- [UI](/src/features/UI)

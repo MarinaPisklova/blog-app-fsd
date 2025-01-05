@@ -82,6 +82,22 @@ export default {
         __PROJECT__: JSON.stringify('storybook'),
       }),
     );
+
+    config!.module!.rules = config!.module!.rules.filter(
+      (rule) =>
+        rule &&
+        typeof rule === 'object' &&
+        'test' in rule &&
+        !(rule.test instanceof RegExp && rule.test.test('.jpg')),
+    );
+
+    config!.module!.rules.push({
+      test: /\.jpg$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/media/src/shared/assets/tests/[name][ext]', // Без хеша
+      },
+    });
     // Return the altered config
     return config;
   },

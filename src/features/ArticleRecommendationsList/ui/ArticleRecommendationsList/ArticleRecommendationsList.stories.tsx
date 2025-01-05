@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Article, ArticleType } from '@/entities/Article';
+import image from '@/shared/assets/tests/storybook.jpg';
 
 export default {
   title: 'features/ArticleRecommendationsList',
@@ -17,7 +18,7 @@ const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
 
 const article: Article = {
   id: '1',
-  img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+  img: image,
   createdAt: '26.02.2022',
   views: 123,
   user: { id: '1', username: '123' },
@@ -33,7 +34,7 @@ Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
   mockData: [
     {
-      url: `${__API__}/articles?_limit=3`,
+      url: `${__API__}/articles?_limit=3&_expand=user`,
       method: 'GET',
       status: 200,
       response: [

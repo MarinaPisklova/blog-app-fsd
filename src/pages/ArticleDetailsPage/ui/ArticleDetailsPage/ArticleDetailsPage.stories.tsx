@@ -8,19 +8,19 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 import { getAllFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
-import avatar from '@/shared/assets/tests/storybook.jpg';
+import img from '@/shared/assets/tests/storybook.jpg';
 
 const mockArticle: Article = {
   id: '1',
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',
-  img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+  img,
   views: 1022,
   createdAt: '26.02.2022',
   user: {
     id: '1',
     username: 'user',
-    avatar,
+    avatar: img,
   },
   type: ArticleType.IT,
   blocks: [
@@ -57,7 +57,7 @@ const mockComments = [
     text: 'Great article!',
     user: {
       username: 'Andrew',
-      avatar,
+      avatar: img,
     },
   },
   {
@@ -65,7 +65,7 @@ const mockComments = [
     text: 'Very informative.',
     user: {
       username: 'Nastya',
-      avatar,
+      avatar: img,
     },
   },
 ];
@@ -132,17 +132,6 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => {
     </Routes>
   );
 };
-
-export const NormalTheme = Template.bind({});
-NormalTheme.args = {};
-
-export const DarkTheme = Template.bind({});
-DarkTheme.args = {};
-DarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const PurpleTheme = Template.bind({});
-PurpleTheme.args = {};
-PurpleTheme.decorators = [ThemeDecorator(Theme.PURPLE)];
 
 export const RedesignedNormalTheme = Template.bind({});
 RedesignedNormalTheme.args = {};

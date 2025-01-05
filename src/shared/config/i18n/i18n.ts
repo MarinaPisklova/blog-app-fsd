@@ -16,6 +16,7 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
+    load: 'languageOnly',
     saveMissing: true,
     backend: {
       // Указываете пути к файлам для каждого пространства имен

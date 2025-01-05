@@ -4,6 +4,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
+import img from '@/shared/assets/tests/storybook.jpg';
 
 const mockStore = {
   user: {
@@ -24,7 +25,7 @@ const mockRequest = {
       id: '1',
       title: 'Javascript news',
       subtitle: 'Что нового в JS за 2022 год?',
-      img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+      img,
       views: 500,
       createdAt: '26.02.2022',
       userId: '1',
@@ -37,7 +38,7 @@ const mockRequest = {
       id: '2',
       title: 'Python news',
       subtitle: 'Что нового в JS за 2022 год?',
-      img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+      img,
       views: 1022,
       createdAt: '26.12.2022',
       userId: '2',
@@ -50,7 +51,7 @@ const mockRequest = {
       id: '3',
       title: 'Kotlin news',
       subtitle: 'Что нового в JS за 2022 год?',
-      img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+      img,
       views: 10,
       createdAt: '06.08.2023',
       userId: '1',
